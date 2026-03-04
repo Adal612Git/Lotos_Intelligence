@@ -21,7 +21,7 @@ from playwright.async_api import async_playwright, TimeoutError as PlaywrightTim
 # ==========================
 # CONFIG BASICO
 # ==========================
-API_KEY = "AIzaSyCzXMY3AB4JkGIQjaekxUZTmhNzozuK0jI"
+API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
 
 ZONAS = ["Zona Chapultepec", "Providencia", "Santa Tere"]
 RUBROS = ["Restaurantes", "Notarias", "Talleres Mecanicos", "Spas"]
@@ -444,7 +444,7 @@ class LotosSecurity:
         ok = True
 
         if not API_KEY:
-            LOGGER.error("API_KEY vacia. Aborta.")
+            LOGGER.error("API_KEY vacia. Define GEMINI_API_KEY y vuelve a intentar.")
             audit.event("preflight_fail", {"reason": "missing_api_key"})
             return False
 
@@ -579,9 +579,9 @@ def banner() -> None:
         " _      _       _           _______          _                 ",
         "| |    (_)     | |         |__   __|        | |                ",
         "| |     _  __ _| |_ ___ ______| | ___   ___ | | ___  ___       ",
-        "| |    | |/ _` | __/ _ \______| |/ _ \ / _ \| |/ _ \/ __|",
-        "| |____| | (_| | ||  __/      | | (_) | (_) | |  __/\__ \",
-        "|______|_|\__,_|\__\___|      |_|\___/ \___/|_|\___||___/",
+        "| |    | |/ _` | __/ _ \\______| |/ _ \\ / _ \\| |/ _ \\/ __|",
+        "| |____| | (_| | ||  __/      | | (_) | (_) | |  __/\\__ \\",
+        "|______|_|\\__,_|\\__\\___|      |_|\\___/ \\___/|_|\\___||___/",
     ]
     print(Fore.CYAN + "\n".join(art) + Style.RESET_ALL)
     print(Fore.YELLOW + "Lotos Technologies - Intelligence Suite" + Style.RESET_ALL)
