@@ -1,0 +1,191 @@
+{"ts": "2026-01-29T01:04:09.877730+00:00", "run_id": "c5ba7580-191f-4178-92f8-35cd2357d27e", "event": "run_start", "payload": {"api_key": "AIza...K0jI", "profile": "balance"}}
+{"ts": "2026-01-29T01:04:31.967350+00:00", "run_id": "c5ba7580-191f-4178-92f8-35cd2357d27e", "event": "preflight_fail", "payload": {"reason": "network"}}
+{"ts": "2026-01-29T01:07:04.960381+00:00", "run_id": "80d42242-f651-4a7c-81da-8e98338d1142", "event": "run_start", "payload": {"api_key": "AIza...K0jI", "profile": "balance"}}
+{"ts": "2026-01-29T01:07:36.395111+00:00", "run_id": "c6654b70-6711-4b4b-bd3f-1c6f04df5835", "event": "run_start", "payload": {"api_key": "AIza...K0jI", "profile": "balance"}}
+{"ts": "2026-01-29T01:08:22.318608+00:00", "run_id": "753a361d-764e-43c2-9477-01768f224065", "event": "run_start", "payload": {"api_key": "AIza...K0jI", "profile": "balance"}}
+{"ts": "2026-01-29T01:08:27.064805+00:00", "run_id": "0698e0a6-865e-40b1-805d-9645b2cc7a99", "event": "run_start", "payload": {"api_key": "AIza...K0jI", "profile": "balance"}}
+{"ts": "2026-01-29T01:08:33.466787+00:00", "run_id": "f3555d86-19b2-43e7-a26c-5825835d76ea", "event": "run_start", "payload": {"api_key": "AIza...K0jI", "profile": "balance"}}
+{"ts": "2026-01-29T01:16:08.196076+00:00", "run_id": "1cf2823e-e8ab-45eb-8d54-79c472e387ba", "event": "run_start", "payload": {"api_key": "AIza...K0jI", "profile": "balance"}}
+{"ts": "2026-01-29T01:17:26.302425+00:00", "run_id": "6e05ecdf-469f-4153-bfb0-6f6c44c54362", "event": "run_start", "payload": {"api_key": "AIza...K0jI", "profile": "balance"}}
+{"ts": "2026-01-29T01:28:19.111771+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "run_start", "payload": {"api_key": "AIza...K0jI", "profile": "balance"}}
+{"ts": "2026-01-29T01:28:36.757684+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Notarias en San Juan de Dios, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.760927+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Abogados en Lomas del Valle, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.762451+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Gimnasios en Andares, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.763129+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Cafeterias en Lafayette, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.763727+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Gimnasios en Tlaquepaque Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.764223+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Spas en Americana, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.764744+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Agencias de viajes en San Juan de Dios, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.765236+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Gimnasios en Santa Anita, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.765724+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Inmobiliarias en Colonia Moderna, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.766253+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Restaurantes en Santa Tere, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.766856+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Dentistas en Lafayette, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.767680+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Laboratorios clinicos en Arcos Vallarta, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.768279+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Veterinarias en Tonalá Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.770932+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Agencias de viajes en Valle Real, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.771569+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Dentistas en Oblatos, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.772504+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Laboratorios clinicos en Miravalle, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.773309+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Gimnasios en Lafayette, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.774617+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Talleres Mecanicos en La Estancia, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.776052+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Agencias de viajes en Puerta de Hierro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.777473+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Agencias de viajes en Americana, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.784755+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Laboratorios clinicos en Tlajomulco Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.785241+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Laboratorios clinicos en Ciudad Granja, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.785518+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Inmobiliarias en Lafayette, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.785741+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Consultorios psicologicos en Santa Anita, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.786023+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Consultorios psicologicos en Puerta de Hierro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.786188+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Abogados en Colinas de San Javier, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.786340+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Laboratorios clinicos en Lafayette, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.786518+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Dentistas en Tonalá Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.786673+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Agencias de viajes en Ciudad Granja, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.786856+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Inmobiliarias en Villa Universitaria, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.787027+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Laboratorios clinicos en Villa Universitaria, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.787168+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Dentistas en Colonia Moderna, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.834055+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Inmobiliarias en Zona Chapultepec, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.938244+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Notarias en Providencia, Guadalajara"}}
+{"ts": "2026-01-29T01:28:36.989983+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Consultorios psicologicos en Ciudad Granja, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.015087+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Laboratorios clinicos en Valle Real, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.015552+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Gimnasios en Jardines Universidad, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.015862+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Laboratorios clinicos en Santa Tere, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.016100+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Consultorios psicologicos en Lomas del Valle, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.016280+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Escuelas privadas en La Estancia, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.016444+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Salones de belleza en Tlaquepaque Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.016607+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Talleres Mecanicos en Ciudad Granja, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.016821+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Restaurantes en Oblatos, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.017112+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Inmobiliarias en Zona Chapultepec, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.017299+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Notarias en Tlaquepaque Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.017460+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Laboratorios clinicos en La Estancia, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.017607+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Salones de belleza en Miravalle, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.017747+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Agencias de viajes en Santa Tere, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.017884+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Spas en Zona Chapultepec, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.018027+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Clinicas en Zapopan Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.018163+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Consultorios psicologicos en Providencia, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.018314+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Escuelas privadas en Tlaquepaque Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.018451+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Consultorios psicologicos en Valle Real, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.018586+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Restaurantes en Valle Real, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.018750+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Spas en Valle Real, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.018906+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Dentistas en Jardines del Bosque, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.019042+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Abogados en Ciudad Granja, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.019181+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Clinicas en Colinas de San Javier, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.019318+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Consultorios psicologicos en Analco, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.019450+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Consultorios psicologicos en Colonia Moderna, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.019578+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Inmobiliarias en La Estancia, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.019703+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Gimnasios en Puerta de Hierro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.019826+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Salones de belleza en Miravalle, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.019947+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Salones de belleza en Andares, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.020077+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Clinicas en Oblatos, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.020255+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Clinicas en La Calma, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.020403+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Dentistas en Arcos Vallarta, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.020541+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Inmobiliarias en Santa Anita, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.020672+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Gimnasios en Ciudad Granja, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.020809+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Escuelas privadas en La Calma, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.020939+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Agencias de viajes en Providencia, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.021067+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Dentistas en Chapalita, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.021210+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Escuelas privadas en La Calma, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.021343+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Notarias en Centro Guadalajara, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.021475+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Notarias en Tonalá Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.021642+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Escuelas privadas en Lafayette, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.021798+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Escuelas privadas en Tonalá Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.021928+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Consultorios psicologicos en Villa Universitaria, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.022055+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Cafeterias en Tonalá Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.022186+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Salones de belleza en Colonia Moderna, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.022313+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Talleres Mecanicos en Jardines Universidad, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.022450+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Salones de belleza en Analco, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.022574+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Talleres Mecanicos en Lafayette, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.022708+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Clinicas en Tonalá Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.022845+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Gimnasios en La Estancia, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.022974+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Agencias de viajes en Chapalita, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.023104+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Clinicas en Analco, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.023238+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Dentistas en Puerta de Hierro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.023363+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Escuelas privadas en Andares, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.023488+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Inmobiliarias en Villa Universitaria, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.023617+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Cafeterias en Santa Anita, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.023745+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Abogados en Jardines del Bosque, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.023869+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Abogados en Miravalle, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.024008+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Veterinarias en Colinas de San Javier, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.024138+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Consultorios psicologicos en El Colli, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.024264+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Dentistas en Zona Chapultepec, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.024410+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Abogados en Analco, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.024548+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Inmobiliarias en Arcos Vallarta, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.024683+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Notarias en Santa Tere, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.024820+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Restaurantes en Andares, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.024950+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Dentistas en Providencia, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.025076+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Dentistas en La Calma, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.025203+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Inmobiliarias en Providencia, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.025328+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Clinicas en Lafayette, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.025454+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Gimnasios en Zona Chapultepec, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.025576+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Consultorios psicologicos en Tlaquepaque Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.025706+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Abogados en Tlajomulco Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.025831+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Salones de belleza en Centro Guadalajara, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.025953+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Spas en Oblatos, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.026083+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Consultorios psicologicos en Santa Anita, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.026242+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Abogados en San Juan de Dios, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.026378+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Inmobiliarias en Jardines del Bosque, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.026508+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Inmobiliarias en Providencia, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.026637+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Notarias en Andares, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.026790+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Restaurantes en Puerta de Hierro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.026925+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Gimnasios en Chapalita, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.027051+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Veterinarias en Arcos Vallarta, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.027230+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Laboratorios clinicos en Colonia Moderna, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.027398+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Laboratorios clinicos en Zapopan Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:28:37.027546+00:00", "run_id": "27c6d9a5-c0f1-46de-a619-aa4a3fcd44b0", "event": "places_search_start", "payload": {"query": "Veterinarias en Centro Guadalajara, Guadalajara"}}
+{"ts": "2026-01-29T01:38:43.518867+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "run_start", "payload": {"api_key": "AIza...K0jI", "profile": "balance"}}
+{"ts": "2026-01-29T01:39:10.837590+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Cafeterias en Americana, Guadalajara"}}
+{"ts": "2026-01-29T01:39:10.843729+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Laboratorios clinicos en Villa Universitaria, Guadalajara"}}
+{"ts": "2026-01-29T01:39:10.845518+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Salones de belleza en La Calma, Guadalajara"}}
+{"ts": "2026-01-29T01:39:10.846680+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Abogados en San Juan de Dios, Guadalajara"}}
+{"ts": "2026-01-29T01:39:10.847227+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Salones de belleza en Tlaquepaque Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:39:10.847934+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Veterinarias en Villa Universitaria, Guadalajara"}}
+{"ts": "2026-01-29T01:39:10.848549+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Talleres Mecanicos en Americana, Guadalajara"}}
+{"ts": "2026-01-29T01:39:10.849065+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Veterinarias en Zapopan Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:39:10.849645+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Dentistas en Valle Real, Guadalajara"}}
+{"ts": "2026-01-29T01:39:10.850191+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Consultorios psicologicos en Jardines Universidad, Guadalajara"}}
+{"ts": "2026-01-29T01:39:10.851046+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Notarias en Miravalle, Guadalajara"}}
+{"ts": "2026-01-29T01:39:10.852119+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Cafeterias en Tlaquepaque Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:39:10.854445+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Escuelas privadas en Lomas del Valle, Guadalajara"}}
+{"ts": "2026-01-29T01:39:10.855439+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Gimnasios en Ciudad Granja, Guadalajara"}}
+{"ts": "2026-01-29T01:39:10.856408+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Clinicas en La Estancia, Guadalajara"}}
+{"ts": "2026-01-29T01:39:10.859968+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Notarias en Zona Chapultepec, Guadalajara"}}
+{"ts": "2026-01-29T01:39:10.861900+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Notarias en Colonia Moderna, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.035215+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Restaurantes en Tlaquepaque Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.050975+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Consultorios psicologicos en Jardines Universidad, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.052032+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Clinicas en Providencia, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.052540+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Salones de belleza en Santa Tere, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.052808+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Gimnasios en Jardines del Bosque, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.053005+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Consultorios psicologicos en Valle Real, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.053178+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Clinicas en Zona Chapultepec, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.053344+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Spas en Tlaquepaque Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.053506+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Clinicas en Jardines del Bosque, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.053653+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Clinicas en Lafayette, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.053792+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Clinicas en Villa Universitaria, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.053930+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Notarias en San Juan de Dios, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.054080+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_search_start", "payload": {"query": "Agencias de viajes en Chapalita, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.138562+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Notarias en Miravalle, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.153095+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Clinicas en La Estancia, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.158886+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Dentistas en Valle Real, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.263412+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Gimnasios en Jardines del Bosque, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.295567+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Talleres Mecanicos en Americana, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.297123+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Abogados en San Juan de Dios, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.297824+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Escuelas privadas en Lomas del Valle, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.298093+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Gimnasios en Ciudad Granja, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.298981+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Salones de belleza en Tlaquepaque Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.301372+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Veterinarias en Villa Universitaria, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.303084+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Cafeterias en Tlaquepaque Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.304289+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Veterinarias en Zapopan Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.308531+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Notarias en Colonia Moderna, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.308688+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Notarias en Zona Chapultepec, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.310043+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Cafeterias en Americana, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.313614+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Restaurantes en Tlaquepaque Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.314512+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Consultorios psicologicos en Jardines Universidad, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.317394+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Laboratorios clinicos en Villa Universitaria, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.318949+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Clinicas en Providencia, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.321548+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Salones de belleza en La Calma, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.323342+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Consultorios psicologicos en Jardines Universidad, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.376503+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Clinicas en Zona Chapultepec, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.410685+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Salones de belleza en Santa Tere, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.421778+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Consultorios psicologicos en Valle Real, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.551207+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Spas en Tlaquepaque Centro, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.552918+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Clinicas en Jardines del Bosque, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.559335+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Clinicas en Villa Universitaria, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.560099+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Clinicas en Lafayette, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.562876+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Notarias en San Juan de Dios, Guadalajara"}}
+{"ts": "2026-01-29T01:39:11.577267+00:00", "run_id": "d95e878f-bcb7-4f8c-b05a-6c0ad73da9cb", "event": "places_forbidden", "payload": {"query": "Agencias de viajes en Chapalita, Guadalajara"}}

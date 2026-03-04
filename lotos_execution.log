@@ -1,0 +1,220 @@
+2026-01-28 19:04:17,615 | INFO | Preflight OK: archivos escribibles
+2026-01-28 19:04:31,966 | ERROR | Precheck network failed: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("input#searchboxinput") to be visible
+
+2026-01-28 19:07:06,951 | INFO | Preflight OK: archivos escribibles
+2026-01-28 19:07:20,325 | INFO | Launching 12 tasks
+2026-01-28 19:07:30,452 | ERROR | Final Excel save failed: No columns to parse from file
+2026-01-28 19:07:37,165 | INFO | Preflight OK: archivos escribibles
+2026-01-28 19:08:23,944 | ERROR | Final Excel save failed: No columns to parse from file
+2026-01-28 19:08:34,891 | INFO | Preflight OK: archivos escribibles
+2026-01-28 19:08:48,715 | INFO | Launching 24 tasks
+2026-01-28 19:08:58,813 | ERROR | Final Excel save failed: No columns to parse from file
+2026-01-28 19:17:30,167 | INFO | Preflight OK: archivos escribibles
+2026-01-28 19:17:43,649 | INFO | Launching 960 tasks (headless=True)
+2026-01-28 19:17:53,711 | WARNING | No listings found. Retrying in headful mode.
+2026-01-28 19:17:54,072 | INFO | Launching 960 tasks (headless=False)
+2026-01-28 19:18:04,232 | WARNING | Partial CSV empty. Skipping Excel export.
+2026-01-28 19:28:20,951 | INFO | Preflight OK: archivos escribibles
+2026-01-28 19:28:37,162 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,240 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,257 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,260 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,260 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,266 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,268 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,270 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,271 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,273 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,273 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,274 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,274 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,275 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,276 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,277 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,280 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,291 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,300 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,346 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,457 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,491 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,522 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,522 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,525 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,532 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,532 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,534 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,538 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,540 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,541 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,543 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,546 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,546 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,551 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,552 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,552 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,555 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,563 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,603 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,654 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,655 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,725 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,766 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,777 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,782 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,790 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,790 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,794 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,795 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,797 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,802 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,804 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,810 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,817 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,820 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,821 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,822 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,823 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,870 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,903 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:37,905 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,002 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,031 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,033 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,035 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,043 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,044 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,050 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,057 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,059 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,064 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,073 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,073 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,073 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,074 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,087 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,091 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,097 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,132 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,133 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,168 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,178 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,185 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,198 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,272 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,287 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,288 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,300 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,303 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,304 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,309 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,317 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,327 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,328 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,330 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,330 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,351 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,352 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,390 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,416 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,418 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,429 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,446 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,448 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,451 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,528 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,538 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,557 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,559 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,565 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,582 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,585 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,585 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,585 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,587 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,589 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,604 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,607 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:38,658 | ERROR | HTTP JSON failed: HTTP Error 403: Forbidden
+2026-01-28 19:28:46,759 | WARNING | Partial CSV empty. Skipping Excel export.
+2026-01-28 19:28:46,761 | WARNING | Places returned 0. Falling back to Maps.
+2026-01-28 19:28:47,320 | INFO | Launching 120 tasks (headless=False)
+2026-01-28 19:28:57,470 | WARNING | Partial CSV empty. Skipping Excel export.
+2026-01-28 19:38:54,987 | INFO | Preflight OK: archivos escribibles
+2026-01-28 19:39:11,136 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,141 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,151 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,154 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,157 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,160 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,262 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,264 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,292 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,293 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,293 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,294 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,296 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,297 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,299 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,299 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,300 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,300 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,300 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,302 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,302 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,303 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,303 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,304 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,307 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,307 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,309 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,309 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,309 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,310 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,313 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,314 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,314 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,314 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,316 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,317 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,318 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,319 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,321 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,322 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,322 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,324 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,375 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,377 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,409 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,412 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,420 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,423 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,549 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,551 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,554 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,554 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,557 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,559 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,560 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,561 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,562 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,563 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:11,575 | ERROR | HTTP 403 Forbidden (API key not authorized or billing disabled).
+2026-01-28 19:39:11,578 | ERROR | Places API forbidden. Falling back to Maps.
+2026-01-28 19:39:20,840 | WARNING | Partial CSV empty. Skipping Excel export.
+2026-01-28 19:39:20,840 | WARNING | Places returned 0. Falling back to Maps.
+2026-01-28 19:39:22,064 | INFO | Launching 30 tasks (headless=False)
+2026-01-28 19:39:32,296 | WARNING | Partial CSV empty. Skipping Excel export.
+2026-01-28 22:11:00,882 | ERROR | Future exception was never retrieved
+future: <Future finished exception=TargetClosedError('Target page, context or browser has been closed')>
+playwright._impl._errors.TargetClosedError: Target page, context or browser has been closed
+2026-01-28 22:15:14,748 | ERROR | Future exception was never retrieved
+future: <Future finished exception=TargetClosedError('Target page, context or browser has been closed')>
+playwright._impl._errors.TargetClosedError: Target page, context or browser has been closed
+2026-01-28 22:17:03,888 | ERROR | Future exception was never retrieved
+future: <Future finished exception=TargetClosedError('Target page, context or browser has been closed')>
+playwright._impl._errors.TargetClosedError: Target page, context or browser has been closed
+2026-01-28 22:17:03,889 | ERROR | Future exception was never retrieved
+future: <Future finished exception=TargetClosedError('Target page, context or browser has been closed')>
+playwright._impl._errors.TargetClosedError: Target page, context or browser has been closed

@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotos Technologies - Interactive Tech Topology Map</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/interactjs@1.10.17/dist/interact.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+        
+        body {
+            background-color: #0a0e17;
+            color: #e0e0e0;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+        
+        /* Encabezado */
+        .header {
+            background: rgba(10, 14, 23, 0.95);
+            border-bottom: 1px solid #00ff9d;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.2);
+            position: relative;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            color: #00ff9d;
+            font-size: 24px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00ff9d, #bd00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .tagline {
+            color: #888;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .control-btn {
+            background: #1a1f2e;
+            border: 1px solid #2a2f3e;
+            color: #e0e0e0;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .control-btn:hover {
+            border-color: #00ff9d;
+            box-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
+        }
+        
+        .control-btn.active {
+            background: #0a3d2a;
+            border-color: #00ff9d;
+            color: #00ff9d;
+        }
+        
+        /* Layout principal */
+        .main-container {
+            display: flex;
+            height: calc(100vh - 70px);
+        }
+        
+        /* Panel lateral */
+        .sidebar {
+            width: 320px;
+            background: rgba(15, 20, 30, 0.9);
+            border-right: 1px solid #2a2f3e;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 10;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-title {
+            color: #00ff9d;
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #2a2f3e;
+        }
+        
+        .category-list {
+            margin-bottom: 30px;
+        }
+        
+        .category-item {
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            background: rgba(30, 35, 50, 0.7);
+            border-left: 4px solid;
+            border-radius: 4px;
+            cursor: move;
+            position: relative;
+            transition: all 0.2s;
+        }
+        
+        .category-item:hover {
+            background: rgba(40, 45, 60, 0.9);
+            transform: translateX(5px);
+        }
+        
+        .category-item.infrastructure {
+            border-color: #00a8ff;
+        }
+        
+        .category-item.core {
+            border-color: #00ff9d;
+        }
+        
+        .category-item.product {
+            border-color: #bd00ff;
+        }
+        
+        .category-item.hardware {
+            border-color: #ff9d00;
+        }
+        
+        .category-tag {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            background: #2a2f3e;
+            color: #aaa;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+        
+        /* Product examples */
+        .product-examples {
+            background: rgba(30, 35, 50, 0.5);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
+        .example-item {
+            background: rgba(40, 45, 60, 0.7);
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border-left: 3px solid #bd00ff;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            color: #bd00ff;
+            margin-bottom: 5px;
+        }
+        
+        .example-desc {
+            font-size: 13px;
+            color: #aaa;
+        }
+        
+        /* Área de lienzo */
+        .canvas-container {
+            flex: 1;
+            position: relative;
+            overflow: auto;
+            background: 
+                linear-gradient(rgba(10, 14, 23, 0.9), rgba(10, 14, 23, 0.9)),
+                repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(0, 255, 157, 0.05) 24px, rgba(0, 255, 157, 0.05) 25px),
+                repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(0, 255, 157, 0.05) 24px, rgba(0, 255, 157, 0.05) 25px);
+            background-size: 100% 100%, 25px 25px, 25px 25px;
+        }
+        
+        .canvas {
+            width: 2000px;
+            height: 2000px;
+            position: relative;
+        }
+        
+        /* Capas de la arquitectura */
+        .layer-label {
+            position: absolute;
+            font-size: 14px;
+            color: #888;
+            padding: 5px 10px;
+            background: rgba(20, 25, 40, 0.8);
+            border-radius: 4px;
+            border: 1px solid #2a2f3e;
+            z-index: 1;
+        }
+        
+        .layer-infra {
+            top: 150px;
+            left: 50px;
+        }
+        
+        .layer-core {
+            top: 550px;
+            left: 50px;
+        }
+        
+        .layer-products {
+            top: 950px;
+            left: 50px;
+        }
+        
+        /* Nodos */
+        .node {
+            position: absolute;
+            width: 180px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            cursor: move;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        
+        .node:hover {
+            transform: scale(1.03);
+            z-index: 100;
+        }
+        
+        .node.infrastructure {
+            background: rgba(10, 40, 70, 0.9);
+            border: 1px solid #00a8ff;
+            box-shadow: 0 0 20px rgba(0, 168, 255, 0.3);
+        }
+        
+        .node.core {
+            background: rgba(10, 50, 40, 0.9);
+            border: 1px solid #00ff9d;
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+        }
+        
+        .node.product {
+            background: rgba(50, 10, 70, 0.9);
+            border: 1px solid #bd00ff;
+            box-shadow: 0 0 20px rgba(189, 0, 255, 0.3);
+        }
+        
+        .node.hardware {
+            background: rgba(70, 50, 10, 0.9);
+            border: 1px solid #ff9d00;
+            box-shadow: 0 0 20px rgba(255, 157, 0, 0.3);
+        }
+        
+        .node.snap-highlight {
+            box-shadow: 0 0 30px rgba(0, 255, 157, 0.7);
+            border-color: #00ff9d;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 20px rgba(0, 255, 157, 0.7); }
+            50% { box-shadow: 0 0 30px rgba(0, 255, 157, 1); }
+            100% { box-shadow: 0 0 20px rgba(0, 255, 157, 0.7); }
+        }
+        
+        .node-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 5px;
+        }
+        
+        .node-title {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .node-type {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .node-content {
+            font-size: 12px;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+        
+        .node-tech {
+            font-size: 11px;
+            color: #aaa;
+            font-style: italic;
+        }
+        
+        .node-needs {
+            font-size: 10px;
+            color: #ff9d00;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed rgba(255, 157, 0, 0.3);
+        }
+        
+        .connection-status {
+            position: absolute;
+            top: -25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 10px;
+            color: #00ff9d;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2px;
+            border-radius: 3px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .node.connected .connection-status {
+            opacity: 1;
+        }
+        
+        /* Líneas de conexión */
+        .connector {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+        
+        .connection-line {
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 5, 5;
+        }
+        
+        .connection-line.infrastructure {
+            stroke: rgba(0, 168, 255, 0.7);
+        }
+        
+        .connection-line.core {
+            stroke: rgba(0, 255, 157, 0.7);
+        }
+        
+        .connection-line.product {
+            stroke: rgba(189, 0, 255, 0.7);
+        }
+        
+        .connection-line.active {
+            stroke-width: 3;
+            stroke-dasharray: none;
+            animation: flow 2s linear infinite;
+        }
+        
+        @keyframes flow {
+            0% { stroke-dashoffset: 20; }
+            100% { stroke-dashoffset: 0; }
+        }
+        
+        /* Panel de combinaciones */
+        .combinations-panel {
+            background: rgba(20, 25, 40, 0.95);
+            border-top: 1px solid #2a2f3e;
+            padding: 15px;
+            position: absolute;
+            bottom: 0;
+            left: 320px;
+            right: 0;
+            height: 200px;
+            overflow-y: auto;
+            z-index: 50;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .combinations-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .combination-item {
+            background: rgba(30, 35, 50, 0.7);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border-left: 4px solid #bd00ff;
+        }
+        
+        .combination-item.possible {
+            border-left-color: #00ff9d;
+        }
+        
+        .combination-title {
+            font-weight: bold;
+            color: #bd00ff;
+            margin-bottom: 5px;
+        }
+        
+        .combination-title.possible {
+            color: #00ff9d;
+        }
+        
+        .combination-desc {
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 8px;
+        }
+        
+        .combination-tech {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        /* Instrucciones */
+        .instructions {
+            position: absolute;
+            top: 100px;
+            right: 20px;
+            background: rgba(20, 25, 40, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #2a2f3e;
+            width: 280px;
+            z-index: 20;
+            font-size: 13px;
+        }
+        
+        .instructions h3 {
+            color: #00ff9d;
+            margin-bottom: 10px;
+        }
+        
+        .instructions ul {
+            padding-left: 20px;
+            color: #aaa;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        
+        /* Estados de UI */
+        .status-indicator {
+            position: absolute;
+            bottom: 220px;
+            right: 20px;
+            background: rgba(20, 25, 40, 0.9);
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #2a2f3e;
+            font-size: 12px;
+            color: #00ff9d;
+            z-index: 20;
+        }
+        
+        .dragging {
+            opacity: 0.8;
+            transform: rotate(5deg);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .sidebar {
+                width: 280px;
+            }
+            
+            .combinations-panel {
+                left: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <div class="header">
+        <div class="logo">
+            <div class="logo-icon">⚡</div>
+            <div>
+                <div class="logo-text">LOTOS TECHNOLOGIES</div>
+                <div class="tagline">Global Architecture 2026 - Interactive Tech Topology Map</div>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="control-btn active" id="btn-show-all">Mostrar Todo</button>
+            <button class="control-btn" id="btn-reset">Resetear Posiciones</button>
+            <button class="control-btn" id="btn-save">Guardar Mapa</button>
+        </div>
+    </div>
+    
+    <div class="main-container">
+        <!-- Panel lateral -->
+        <div class="sidebar">
+            <h3 class="section-title">🧱 Componentes Disponibles</h3>
+            <div class="category-list">
+                <div class="section-title">Infraestructura</div>
+                <div class="category-item infrastructure" data-id="coolify">
+                    <div class="category-tag">INFRA</div>
+                    <div class="node-title">Coolify (Control)</div>
+                    <div class="node-content">Panel de control Docker</div>
+                    <div class="node-tech">Tech: Docker, CI/CD</div>
+                </div>
+                
+                <div class="category-item infrastructure" data-id="hetzner">
+                    <div class="category-tag">INFRA</div>
+                    <div class="node-title">Hetzner (Cloud)</div>
+                    <div class="node-content">Servidores en Finlandia</div>
+                    <div class="node-tech">Tech: VPS, Bare Metal</div>
+                </div>
+                
+                <div class="category-item infrastructure" data-id="n8n">
+                    <div class="category-tag">INFRA</div>
+                    <div class="node-title">n8n (Automation)</div>
+                    <div class="node-content">Automatización de flujos</div>
+                    <div class="node-tech">Tech: Workflow, Integraciones</div>
+                </div>
+                
+                <div class="category-item infrastructure" data-id="postgres">
+                    <div class="category-tag">INFRA</div>
+                    <div class="node-title">PostgreSQL (Master DB)</div>
+                    <div class="node-content">Base de datos principal</div>
+                    <div class="node-tech">Tech: PostgreSQL, Replicación</div>
+                </div>
+            </div>
+            
+            <div class="category-list">
+                <div class="section-title">Lotos Core</div>
+                <div class="category-item core" data-id="core">
+                    <div class="category-tag">CORE</div>
+                    <div class="node-title">Lotos Core (Monorepo)</div>
+                    <div class="node-content">Boilerplate: Auth, Payments, UI Shell</div>
+                    <div class="node-tech">Tech: React+Node+PG</div>
+                </div>
+                
+                <div class="category-item core" data-id="api">
+                    <div class="category-tag">CORE</div>
+                    <div class="node-title">Lotos API</div>
+                    <div class="node-content">API Bridge para productos</div>
+                    <div class="node-tech">Tech: Node.js, GraphQL</div>
+                </div>
+            </div>
+            
+            <div class="category-list">
+                <div class="section-title">Productos</div>
+                <div class="category-item product" data-id="neuro">
+                    <div class="category-tag">PRODUCT</div>
+                    <div class="node-title">Neuro-Agent (Chatbot)</div>
+                    <div class="node-content">Asistente IA conversacional</div>
+                    <div class="node-tech">Tech: IA, NLP, API</div>
+                    <div class="node-needs">Necesita: Core + n8n</div>
+                </div>
+                
+                <div class="category-item product" data-id="erp">
+                    <div class="category-tag">PRODUCT</div>
+                    <div class="node-title">ERP Lite</div>
+                    <div class="node-content">ERP simplificado para PyMEs</div>
+                    <div class="node-tech">Tech: React, Node, PG</div>
+                    <div class="node-needs">Necesita: Core + PG</div>
+                </div>
+                
+                <div class="category-item product" data-id="scraper">
+                    <div class="category-tag">PRODUCT</div>
+                    <div class="node-title">Scraper System</div>
+                    <div class="node-content">Extracción automatizada de datos</div>
+                    <div class="node-tech">Tech: n8n + Python</div>
+                    <div class="node-needs">Necesita: n8n + Python</div>
+                </div>
+                
+                <div class="category-item product" data-id="spectra">
+                    <div class="category-tag">PRODUCT</div>
+                    <div class="node-title">SpectraArt (SaaS)</div>
+                    <div class="node-content">Generación de arte con IA</div>
+                    <div class="node-tech">Tech: Stable Diffusion, API</div>
+                    <div class="node-needs">Necesita: Core + IA externa</div>
+                </div>
+            </div>
+            
+            <div class="category-list">
+                <div class="section-title">Hardware/Cliente</div>
+                <div class="category-item hardware" data-id="laptop">
+                    <div class="category-tag">HW</div>
+                    <div class="node-title">Rick's Laptop (RTX 3060)</div>
+                    <div class="node-content">Estación de desarrollo local</div>
+                    <div class="node-tech">Tech: NVIDIA GPU, Docker</div>
+                </div>
+                
+                <div class="category-item hardware" data-id="hq">
+                    <div class="category-tag">HW</div>
+                    <div class="node-title">Lotos HQ (Guadalajara)</div>
+                    <div class="node-content">Oficina central y servidores</div>
+                    <div class="node-tech">Tech: Red local, Devs</div>
+                </div>
+            </div>
+            
+            <div class="product-examples">
+                <h3 class="section-title">💡 Ejemplos de Productos</h3>
+                <div class="example-item">
+                    <div class="example-title">IA Básica para Negocios</div>
+                    <div class="example-desc">Chatbot + Scraper para atención al cliente y obtención de datos de mercado.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-title">Suite de Oficina Moderna</div>
+                    <div class="example-desc">ERP Lite + Automatizaciones n8n para gestión empresarial completa.</div>
+                </div>
+                <div class="example-item">
+                    <div class="example-title">Generador de Contenido Visual</div>
+                    <div class="example-desc">SpectraArt + API para creación de imágenes para marketing.</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Área del lienzo -->
+        <div class="canvas-container" id="canvasContainer">
+            <div class="canvas" id="mainCanvas">
+                <!-- Etiquetas de capas -->
+                <div class="layer-label layer-infra">INFRASTRUCTURE LAYER</div>
+                <div class="layer-label layer-core">LOTOS CORE LAYER</div>
+                <div class="layer-label layer-products">PRODUCTS LAYER</div>
+                
+                <!-- Nodos se agregarán aquí dinámicamente -->
+                
+                <!-- SVG para conexiones -->
+                <svg class="connector" id="connector"></svg>
+            </div>
+            
+            <!-- Panel de instrucciones -->
+            <div class="instructions">
+                <h3>🚀 Cómo usar este mapa</h3>
+                <ul>
+                    <li>Arrastra componentes desde el panel lateral al lienzo</li>
+                    <li>Mueve los nodos para conectar productos con sus dependencias</li>
+                    <li>Cuando los nodos sean compatibles, se conectarán automáticamente</li>
+                    <li>Revisa el panel inferior para ver posibles combinaciones</li>
+                    <li>Haz clic derecho en un nodo para ver opciones</li>
+                </ul>
+                <p style="margin-top: 10px; color: #00ff9d; font-size: 12px;">
+                    <strong>Objetivo:</strong> Crear productos vendibles combinando tecnologías.
+                </p>
+            </div>
+            
+            <!-- Indicador de estado -->
+            <div class="status-indicator" id="statusIndicator">
+                <i class="fas fa-circle" style="color: #00ff9d; margin-right: 5px;"></i>
+                <span id="statusText">Sistema listo - Arrastra y conecta componentes</span>
+            </div>
+        </div>
+        
+        <!-- Panel de combinaciones -->
+        <div class="combinations-panel">
+            <div class="combinations-header">
+                <h3 class="section-title">🛠️ Combinaciones Posibles</h3>
+                <div style="font-size: 12px; color: #888;">Basado en los nodos conectados</div>
+            </div>
+            <div id="combinationsList">
+                <!-- Las combinaciones se generarán dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos de los nodos
+        const nodeData = {
+            // Infraestructura
+            'coolify': { title: 'Coolify (Control)', type: 'infrastructure', tech: 'Docker, CI/CD', x: 300, y: 200 },
+            'hetzner': { title: 'Hetzner (Cloud)', type: 'infrastructure', tech: 'VPS, Bare Metal', x: 550, y: 200 },
+            'n8n': { title: 'n8n (Automation)', type: 'infrastructure', tech: 'Workflow, Integraciones', x: 800, y: 200 },
+            'postgres': { title: 'PostgreSQL (Master DB)', type: 'infrastructure', tech: 'PostgreSQL, Replicación', x: 1050, y: 200 },
+            
+            // Core
+            'core': { title: 'Lotos Core (Monorepo)', type: 'core', tech: 'React+Node+PG', needs: '', x: 400, y: 500 },
+            'api': { title: 'Lotos API', type: 'core', tech: 'Node.js, GraphQL', needs: '', x: 700, y: 500 },
+            
+            // Productos
+            'neuro': { title: 'Neuro-Agent (Chatbot)', type: 'product', tech: 'IA, NLP, API', needs: 'core,n8n', x: 300, y: 800 },
+            'erp': { title: 'ERP Lite', type: 'product', tech: 'React, Node, PG', needs: 'core,postgres', x: 600, y: 800 },
+            'scraper': { title: 'Scraper System', type: 'product', tech: 'n8n + Python', needs: 'n8n', x: 900, y: 800 },
+            'spectra': { title: 'SpectraArt (SaaS)', type: 'product', tech: 'Stable Diffusion, API', needs: 'core', x: 1200, y: 800 },
+            
+            // Hardware
+            'laptop': { title: 'Rick\'s Laptop (RTX 3060)', type: 'hardware', tech: 'NVIDIA GPU, Docker', needs: '', x: 1500, y: 200 },
+            'hq': { title: 'Lotos HQ (Guadalajara)', type: 'hardware', tech: 'Red local, Devs', needs: '', x: 1500, y: 500 }
+        };
+        
+        // Combinaciones posibles de productos
+        const possibleCombinations = [
+            {
+                id: 'combo1',
+                name: 'IA Básica para Negocios',
+                description: 'Chatbot de atención al cliente + Sistema de scraping para datos de mercado',
+                components: ['neuro', 'scraper', 'core'],
+                tech: 'IA + Automatización + Backend',
+                revenue: 'Alta - SaaS mensual',
+                type: 'product'
+            },
+            {
+                id: 'combo2',
+                name: 'Suite de Oficina Moderna',
+                description: 'ERP simplificado con automatizaciones de n8n para procesos empresariales',
+                components: ['erp', 'n8n', 'core'],
+                tech: 'ERP + Workflows + API',
+                revenue: 'Media-Alta - Licencia anual',
+                type: 'product'
+            },
+            {
+                id: 'combo3',
+                name: 'Generador de Contenido Visual',
+                description: 'SaaS para creación de imágenes con IA para marketing y redes sociales',
+                components: ['spectra', 'core', 'api'],
+                tech: 'IA Generativa + Backend + API',
+                revenue: 'Media - Pago por uso',
+                type: 'product'
+            },
+            {
+                id: 'combo4',
+                name: 'Infraestructura Empresarial Completa',
+                description: 'Solución completa de infraestructura en la nube con automatización',
+                components: ['hetzner', 'coolify', 'n8n', 'postgres'],
+                tech: 'Cloud + Docker + CI/CD + DB',
+                revenue: 'Alta - Contrato empresarial',
+                type: 'infrastructure'
+            },
+            {
+                id: 'combo5',
+                name: 'Estación de Desarrollo IA',
+                description: 'Hardware especializado + stack de desarrollo para proyectos de IA',
+                components: ['laptop', 'core', 'n8n'],
+                tech: 'GPU + Backend + Automatización',
+                revenue: 'Una vez + Soporte mensual',
+                type: 'hardware'
+            }
+        ];
+        
+        // Variables globales
+        let nodes = {};
+        let connections = [];
+        let draggedNode = null;
+        let snapDistance = 100;
+        
+        // Inicializar la aplicación
+        document.addEventListener('DOMContentLoaded', function() {
+            // Crear nodos iniciales
+            createInitialNodes();
+            
+            // Configurar interactividad para nodos
+            setupNodeInteractions();
+            
+            // Configurar drag and drop desde el panel lateral
+            setupSidebarDragAndDrop();
+            
+            // Configurar botones de control
+            setupControlButtons();
+            
+            // Actualizar combinaciones
+            updateCombinations();
+            
+            // Actualizar conexiones iniciales
+            updateConnections();
+        });
+        
+        // Crear nodos iniciales en el lienzo
+        function createInitialNodes() {
+            const canvas = document.getElementById('mainCanvas');
+            
+            for (const id in nodeData) {
+                const data = nodeData[id];
+                createNode(id, data.title, data.type, data.tech, data.needs, data.x, data.y);
+            }
+        }
+        
+        // Crear un nodo en el lienzo
+        function createNode(id, title, type, tech, needs, x, y) {
+            const canvas = document.getElementById('mainCanvas');
+            
+            // Crear elemento del nodo
+            const node = document.createElement('div');
+            node.id = `node-${id}`;
+            node.className = `node ${type}`;
+            node.style.left = `${x}px`;
+            node.style.top = `${y}px`;
+            node.dataset.nodeId = id;
+            node.dataset.nodeType = type;
+            node.dataset.nodeNeeds = needs || '';
+            
+            // Contenido del nodo
+            node.innerHTML = `
+                <div class="connection-status">CONECTADO</div>
+                <div class="node-header">
+                    <div class="node-title">${title}</div>
+                    <div class="node-type">${type.toUpperCase()}</div>
+                </div>
+                <div class="node-content">${getNodeDescription(id)}</div>
+                <div class="node-tech">Tech: ${tech}</div>
+                ${needs ? `<div class="node-needs">Necesita: ${needs.replace(/,/g, ', ')}</div>` : ''}
+            `;
+            
+            canvas.appendChild(node);
+            nodes[id] = node;
+            
+            // Hacer el nodo arrastrable
+            makeDraggable(node);
+            
+            return node;
+        }
+        
+        // Obtener descripción del nodo
+        function getNodeDescription(id) {
+            const descriptions = {
+                'coolify': 'Panel de control Docker para despliegue',
+                'hetzner': 'Servidores en la nube en Finlandia',
+                'n8n': 'Automatización de flujos de trabajo',
+                'postgres': 'Base de datos principal PostgreSQL',
+                'core': 'Boilerplate: Auth, Payments, UI Shell',
+                'api': 'API Bridge para integración de productos',
+                'neuro': 'Asistente IA conversacional',
+                'erp': 'ERP simplificado para PyMEs',
+                'scraper': 'Extracción automatizada de datos',
+                'spectra': 'Generación de arte con IA',
+                'laptop': 'Estación de desarrollo local con GPU',
+                'hq': 'Oficina central y servidores locales'
+            };
+            
+            return descriptions[id] || 'Componente del sistema';
+        }
+        
+        // Hacer un elemento arrastrable
+        function makeDraggable(element) {
+            interact(element)
+                .draggable({
+                    inertia: false,
+                    modifiers: [],
+                    autoScroll: true,
+                    listeners: {
+                        start: function(event) {
+                            element.classList.add('dragging');
+                            draggedNode = element;
+                            document.getElementById('statusText').textContent = `Arrastrando: ${element.querySelector('.node-title').textContent}`;
+                        },
+                        move: function(event) {
+                            const x = (parseFloat(element.style.left) || 0) + event.dx;
+                            const y = (parseFloat(element.style.top) || 0) + event.dy;
+                            
+                            element.style.left = `${x}px`;
+                            element.style.top = `${y}px`;
+                            
+                            // Actualizar conexiones mientras se arrastra
+                            updateConnections();
+                            
+                            // Verificar snap/compatibilidad
+                            checkSnapCompatibility(element);
+                        },
+                        end: function(event) {
+                            element.classList.remove('dragging');
+                            draggedNode = null;
+                            
+                            // Quitar resaltado de snap
+                            removeSnapHighlights();
+                            
+                            // Actualizar estado
+                            document.getElementById('statusText').textContent = 'Sistema listo - Arrastra y conecta componentes';
+                            
+                            // Actualizar combinaciones
+                            updateCombinations();
+                        }
+                    }
+                });
+        }
+        
+        // Configurar drag and drop desde el panel lateral
+        function setupSidebarDragAndDrop() {
+            const categoryItems = document.querySelectorAll('.category-item');
+            const canvas = document.getElementById('mainCanvas');
+            const canvasContainer = document.getElementById('canvasContainer');
+            
+            categoryItems.forEach(item => {
+                item.addEventListener('mousedown', function(e) {
+                    if (e.button !== 0) return; // Solo clic izquierdo
+                    
+                    const id = this.dataset.id;
+                    
+                    // Si el nodo ya existe en el lienzo, no crear duplicado
+                    if (nodes[id]) {
+                        // En su lugar, seleccionar el nodo existente
+                        nodes[id].classList.add('dragging');
+                        draggedNode = nodes[id];
+                        document.getElementById('statusText').textContent = `Seleccionado: ${nodes[id].querySelector('.node-title').textContent}`;
+                        return;
+                    }
+                    
+                    // Obtener datos del nodo
+                    const nodeInfo = nodeData[id];
+                    if (!nodeInfo) return;
+                    
+                    // Calcular posición en el lienzo (centro de la vista)
+                    const canvasRect = canvasContainer.getBoundingClientRect();
+                    const scrollLeft = canvasContainer.scrollLeft;
+                    const scrollTop = canvasContainer.scrollTop;
+                    
+                    const x = (canvasRect.width / 2) + scrollLeft - 90;
+                    const y = (canvasRect.height / 2) + scrollTop - 60;
+                    
+                    // Crear el nodo
+                    createNode(id, nodeInfo.title, nodeInfo.type, nodeInfo.tech, nodeInfo.needs, x, y);
+                    
+                    // Iniciar arrastre inmediatamente
+                    setTimeout(() => {
+                        nodes[id].classList.add('dragging');
+                        draggedNode = nodes[id];
+                        document.getElementById('statusText').textContent = `Arrastrando: ${nodeInfo.title}`;
+                    }, 10);
+                });
+            });
+        }
+        
+        // Verificar compatibilidad de snap entre nodos
+        function checkSnapCompatibility(draggedElement) {
+            const draggedId = draggedElement.dataset.nodeId;
+            const draggedType = draggedElement.dataset.nodeType;
+            const draggedNeeds = draggedElement.dataset.nodeNeeds ? draggedElement.dataset.nodeNeeds.split(',') : [];
+            
+            // Solo productos necesitan snap
+            if (draggedType !== 'product') return;
+            
+            // Quitar resaltados anteriores
+            removeSnapHighlights();
+            
+            // Para cada nodo en el lienzo
+            for (const id in nodes) {
+                if (id === draggedId) continue;
+                
+                const targetNode = nodes[id];
+                const targetType = targetNode.dataset.nodeType;
+                
+                // Verificar si este nodo es necesario para el nodo arrastrado
+                if (draggedNeeds.includes(id)) {
+                    // Calcular distancia entre nodos
+                    const draggedRect = draggedElement.getBoundingClientRect();
+                    const targetRect = targetNode.getBoundingClientRect();
+                    
+                    // Convertir a coordenadas del lienzo
+                    const dx = Math.abs((draggedRect.left + draggedRect.width/2) - (targetRect.left + targetRect.width/2));
+                    const dy = Math.abs((draggedRect.top + draggedRect.height/2) - (targetRect.top + targetRect.height/2));
+                    const distance = Math.sqrt(dx*dx + dy*dy);
+                    
+                    // Si están lo suficientemente cerca, resaltar
+                    if (distance < snapDistance) {
+                        draggedElement.classList.add('snap-highlight');
+                        targetNode.classList.add('snap-highlight');
+                        
+                        // Mostrar mensaje de estado
+                        document.getElementById('statusText').textContent = `¡Compatibilidad detectada! ${draggedElement.querySelector('.node-title').textContent} puede conectarse con ${targetNode.querySelector('.node-title').textContent}`;
+                        
+                        // Actualizar conexiones
+                        updateConnections();
+                        return;
+                    }
+                }
+            }
+        }
+        
+        // Quitar resaltados de snap
+        function removeSnapHighlights() {
+            document.querySelectorAll('.node.snap-highlight').forEach(node => {
+                node.classList.remove('snap-highlight');
+            });
+        }
+        
+        // Actualizar conexiones entre nodos
+        function updateConnections() {
+            const connector = document.getElementById('connector');
+            
+            // Limpiar conexiones anteriores
+            connector.innerHTML = '';
+            connections = [];
+            
+            // Para cada nodo de producto, verificar sus necesidades
+            for (const id in nodes) {
+                const node = nodes[id];
+                const nodeType = node.dataset.nodeType;
+                const needs = node.dataset.nodeNeeds ? node.dataset.nodeNeeds.split(',') : [];
+                
+                if (nodeType === 'product' && needs.length > 0) {
+                    // Para cada necesidad, buscar el nodo correspondiente
+                    needs.forEach(needId => {
+                        if (nodes[needId]) {
+                            // Verificar si están lo suficientemente cerca para conectar
+                            const nodeRect = node.getBoundingClientRect();
+                            const needRect = nodes[needId].getBoundingClientRect();
+                            
+                            // Convertir a coordenadas del lienzo
+                            const dx = Math.abs((nodeRect.left + nodeRect.width/2) - (needRect.left + needRect.width/2));
+                            const dy = Math.abs((nodeRect.top + nodeRect.height/2) - (needRect.top + needRect.height/2));
+                            const distance = Math.sqrt(dx*dx + dy*dy);
+                            
+                            // Conectar si están cerca o si ya estaban conectados
+                            const alreadyConnected = connections.some(conn => 
+                                (conn.from === id && conn.to === needId) || 
+                                (conn.from === needId && conn.to === id)
+                            );
+                            
+                            if (distance < snapDistance * 1.5 || alreadyConnected) {
+                                // Agregar a conexiones
+                                connections.push({
+                                    from: id,
+                                    to: needId,
+                                    type: nodeType
+                                });
+                                
+                                // Dibujar línea
+                                drawConnection(node, nodes[needId], nodeType);
+                                
+                                // Marcar nodos como conectados
+                                node.classList.add('connected');
+                                nodes[needId].classList.add('connected');
+                            } else {
+                                // Quitar estado de conectado si no están conectados
+                                node.classList.remove('connected');
+                            }
+                        }
+                    });
+                }
+            }
+        }
+        
+        // Dibujar una línea de conexión entre dos nodos
+        function drawConnection(fromNode, toNode, type) {
+            const connector = document.getElementById('connector');
+            
+            // Obtener posiciones de los nodos
+            const fromRect = fromNode.getBoundingClientRect();
+            const toRect = toNode.getBoundingClientRect();
+            
+            // Obtener posición del lienzo
+            const canvasRect = document.getElementById('mainCanvas').getBoundingClientRect();
+            
+            // Calcular coordenadas relativas al lienzo
+            const fromX = fromRect.left - canvasRect.left + fromRect.width / 2;
+            const fromY = fromRect.top - canvasRect.top + fromRect.height / 2;
+            const toX = toRect.left - canvasRect.left + toRect.width / 2;
+            const toY = toRect.top - canvasRect.top + toRect.height / 2;
+            
+            // Crear línea curva (Bezier)
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            
+            // Calcular punto de control para la curva
+            const midX = (fromX + toX) / 2;
+            const midY = (fromY + toY) / 2;
+            
+            // Ajustar curva según la dirección
+            const ctrlX = midX + (toY - fromY) * 0.2;
+            const ctrlY = midY + (fromX - toX) * 0.2;
+            
+            // Crear path d para curva Bezier cuadrática
+            const d = `M ${fromX} ${fromY} Q ${ctrlX} ${ctrlY}, ${toX} ${toY}`;
+            
+            line.setAttribute('d', d);
+            line.setAttribute('class', `connection-line ${type} active`);
+            
+            connector.appendChild(line);
+        }
+        
+        // Actualizar panel de combinaciones
+        function updateCombinations() {
+            const combinationsList = document.getElementById('combinationsList');
+            combinationsList.innerHTML = '';
+            
+            // Contar nodos conectados por tipo
+            const connectedNodes = Object.keys(nodes).filter(id => {
+                const node = nodes[id];
+                return node.classList.contains('connected') || node.dataset.nodeType === 'infrastructure';
+            });
+            
+            // Para cada combinación posible, verificar si los componentes están conectados
+            possibleCombinations.forEach(combo => {
+                const hasAllComponents = combo.components.every(compId => connectedNodes.includes(compId));
+                
+                const comboElement = document.createElement('div');
+                comboElement.className = `combination-item ${hasAllComponents ? 'possible' : ''}`;
+                
+                comboElement.innerHTML = `
+                    <div class="combination-title ${hasAllComponents ? 'possible' : ''}">
+                        ${combo.name} ${hasAllComponents ? '✅' : '⚠️'}
+                    </div>
+                    <div class="combination-desc">${combo.description}</div>
+                    <div class="combination-tech">Tecnologías: ${combo.tech} | Ingresos: ${combo.revenue}</div>
+                    ${hasAllComponents ? 
+                        '<div style="color: #00ff9d; font-size: 11px; margin-top: 5px;">✅ LISTO PARA VENDER</div>' : 
+                        `<div style="color: #ff9d00; font-size: 11px; margin-top: 5px;">Faltan: ${combo.components.filter(c => !connectedNodes.includes(c)).map(c => nodeData[c]?.title).join(', ')}</div>`
+                    }
+                `;
+                
+                combinationsList.appendChild(comboElement);
+            });
+            
+            // Si no hay combinaciones, mostrar mensaje
+            if (possibleCombinations.length === 0) {
+                combinationsList.innerHTML = '<div style="color: #888; text-align: center; padding: 20px;">Conecta componentes para ver combinaciones posibles</div>';
+            }
+        }
+        
+        // Configurar botones de control
+        function setupControlButtons() {
+            // Botón para mostrar/ocultar todo
+            document.getElementById('btn-show-all').addEventListener('click', function() {
+                // Centrar vista en todos los nodos
+                const canvasContainer = document.getElementById('canvasContainer');
+                canvasContainer.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Botón para resetear posiciones
+            document.getElementById('btn-reset').addEventListener('click', function() {
+                if (confirm('¿Resetear todas las posiciones a los valores iniciales?')) {
+                    for (const id in nodeData) {
+                        const node = nodes[id];
+                        if (node) {
+                            const data = nodeData[id];
+                            node.style.left = `${data.x}px`;
+                            node.style.top = `${data.y}px`;
+                        }
+                    }
+                    
+                    // Actualizar conexiones
+                    updateConnections();
+                    updateCombinations();
+                    
+                    document.getElementById('statusText').textContent = 'Posiciones reseteadas';
+                }
+            });
+            
+            // Botón para guardar mapa
+            document.getElementById('btn-save').addEventListener('click', function() {
+                // Crear objeto con estado actual
+                const state = {};
+                for (const id in nodes) {
+                    const node = nodes[id];
+                    state[id] = {
+                        x: parseFloat(node.style.left) || 0,
+                        y: parseFloat(node.style.top) || 0
+                    };
+                }
+                
+                // Guardar en localStorage
+                localStorage.setItem('lotosTopologyState', JSON.stringify(state));
+                document.getElementById('statusText').textContent = 'Mapa guardado en localStorage';
+                
+                // Mostrar confirmación temporal
+                const btn = this;
+                const originalText = btn.textContent;
+                btn.textContent = '✅ Guardado';
+                btn.classList.add('active');
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('active');
+                }, 2000);
+            });
+            
+            // Cargar estado guardado si existe
+            const savedState = localStorage.getItem('lotosTopologyState');
+            if (savedState) {
+                try {
+                    const state = JSON.parse(savedState);
+                    for (const id in state) {
+                        if (nodes[id]) {
+                            nodes[id].style.left = `${state[id].x}px`;
+                            nodes[id].style.top = `${state[id].y}px`;
+                        }
+                    }
+                    
+                    updateConnections();
+                    updateCombinations();
+                    
+                    console.log('Estado del mapa cargado desde localStorage');
+                } catch (e) {
+                    console.error('Error al cargar estado guardado:', e);
+                }
+            }
+        }
+        
+        // Permitir hacer clic derecho en nodos para más opciones
+        document.addEventListener('contextmenu', function(e) {
+            const node = e.target.closest('.node');
+            if (node) {
+                e.preventDefault();
+                
+                const nodeId = node.dataset.nodeId;
+                const nodeTitle = node.querySelector('.node-title').textContent;
+                
+                document.getElementById('statusText').textContent = `Clic derecho en: ${nodeTitle} - Usa el panel lateral para más opciones`;
+                
+                // Resaltar nodo temporalmente
+                const originalBorder = node.style.border;
+                node.style.border = '2px solid #ff9d00';
+                
+                setTimeout(() => {
+                    node.style.border = originalBorder;
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>

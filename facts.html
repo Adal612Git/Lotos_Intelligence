@@ -1,0 +1,1131 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>LOTOS | Panel de Hallazgos + Plan de Acción</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a33;
+      --panel2: #0f1730;
+      --text: #e8ecff;
+      --muted: #b8c1ff;
+      --soft: rgba(255,255,255,.08);
+      --soft2: rgba(255,255,255,.12);
+      --ok: #43f3b7;
+      --warn: #ffd56a;
+      --bad: #ff6b88;
+      --brand: #7aa2ff;
+      --brand2:#b18bff;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 20% 0%, rgba(122,162,255,.22), transparent 55%),
+                  radial-gradient(900px 600px at 90% 20%, rgba(177,139,255,.18), transparent 55%),
+                  radial-gradient(1200px 800px at 40% 110%, rgba(67,243,183,.14), transparent 55%),
+                  var(--bg);
+      min-height: 100vh;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      padding: 28px 18px 18px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .titleRow {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: .2px;
+    }
+    .sub {
+      margin-top: 8px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--soft2);
+      background: rgba(18,26,51,.65);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .pill b { color: var(--text); font-weight: 700; }
+    .grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 18px 32px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 980px) {
+      .grid {
+        grid-template-columns: 1.15fr .85fr;
+        align-items: start;
+      }
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(18,26,51,.86), rgba(15,23,48,.86));
+      border: 1px solid var(--soft2);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .cardHeader {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .cardHeader h2 {
+      margin: 0;
+      font-size: 15px;
+      letter-spacing: .3px;
+      color: var(--text);
+    }
+    .cardBody { padding: 16px; }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    @media (min-width: 640px) { .kpis { grid-template-columns: repeat(4, 1fr); } }
+    .kpi {
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--soft);
+      border-radius: 14px;
+      padding: 12px;
+    }
+    .kpi .label {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .kpi .value {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+    .kpi .hint {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .banner {
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--soft2);
+      background: rgba(255,213,106,.10);
+      color: var(--text);
+      line-height: 1.35;
+    }
+    .banner strong { color: var(--warn); }
+    .banner small { display:block; color: var(--muted); margin-top: 6px; }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    @media (min-width: 720px) {
+      .controls {
+        grid-template-columns: 1.2fr .6fr .6fr .6fr;
+        align-items: end;
+      }
+    }
+    label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 10px 10px;
+      border-radius: 12px;
+      border: 1px solid var(--soft2);
+      background: rgba(0,0,0,.18);
+      color: var(--text);
+      outline: none;
+    }
+    input[type="text"]::placeholder { color: rgba(184,193,255,.7); }
+    .row { display:flex; align-items:center; gap:10px; flex-wrap: wrap; }
+    .btn {
+      cursor: pointer;
+      user-select: none;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--soft2);
+      background: rgba(122,162,255,.12);
+      color: var(--text);
+      font-weight: 700;
+    }
+    .btn:hover { background: rgba(122,162,255,.18); }
+    .btn.secondary { background: rgba(255,255,255,.06); }
+    .btn.danger { background: rgba(255,107,136,.14); }
+    .toggle {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--soft2);
+      background: rgba(255,255,255,.05);
+    }
+    .toggle input { width: 18px; height: 18px; }
+
+    .charts { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 720px) { .charts { grid-template-columns: 1fr 1fr; } }
+    .chartBox {
+      background: rgba(0,0,0,.18);
+      border: 1px solid var(--soft);
+      border-radius: 14px;
+      padding: 10px;
+    }
+    .chartTitle {
+      display:flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin: 2px 2px 8px;
+    }
+    .chartTitle b { font-size: 13px; }
+    .chartTitle span { color: var(--muted); font-size: 12px; }
+    canvas {
+      width: 100%;
+      height: 220px;
+      background: rgba(255,255,255,.02);
+      border-radius: 10px;
+    }
+
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    thead th {
+      text-align: left;
+      padding: 10px 8px;
+      color: var(--muted);
+      border-bottom: 1px solid var(--soft);
+      font-weight: 700;
+      position: sticky;
+      top: 0;
+      background: rgba(18,26,51,.96);
+      z-index: 1;
+    }
+    tbody td {
+      padding: 10px 8px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      vertical-align: top;
+    }
+    tbody tr:hover { background: rgba(255,255,255,.04); }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--soft2);
+      background: rgba(0,0,0,.16);
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .tag.ok { border-color: rgba(67,243,183,.35); color: var(--ok); background: rgba(67,243,183,.08); }
+    .tag.bad { border-color: rgba(255,107,136,.35); color: var(--bad); background: rgba(255,107,136,.08); }
+    .tag.warn { border-color: rgba(255,213,106,.35); color: var(--warn); background: rgba(255,213,106,.08); }
+    .mono { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+    .small { font-size: 12px; color: var(--muted); line-height: 1.45; }
+
+    .split { display:grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 980px) { .split { grid-template-columns: 1fr 1fr; } }
+
+    .accordion {
+      border: 1px solid var(--soft);
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(0,0,0,.12);
+    }
+    details { border-top: 1px solid rgba(255,255,255,.06); }
+    details:first-child { border-top: none; }
+    summary {
+      cursor: pointer;
+      padding: 12px 14px;
+      list-style: none;
+      font-weight: 800;
+    }
+    summary::-webkit-details-marker { display:none; }
+    .detailBody {
+      padding: 0 14px 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .codeBox {
+      font-family: var(--mono);
+      background: rgba(0,0,0,.25);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: var(--text);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    .drawer {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      display: none;
+      align-items: stretch;
+      justify-content: flex-end;
+      z-index: 1000;
+    }
+    .drawer.open { display:flex; }
+    .drawerPanel {
+      width: min(520px, 92vw);
+      background: linear-gradient(180deg, rgba(18,26,51,.98), rgba(15,23,48,.98));
+      border-left: 1px solid var(--soft2);
+      padding: 14px;
+      box-shadow: var(--shadow);
+      overflow: auto;
+    }
+    .drawerHeader {
+      display:flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .drawerHeader h3 { margin: 0; font-size: 16px; }
+    .drawerGrid { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .drawerGrid .full { grid-column: 1 / -1; }
+    textarea {
+      width: 100%;
+      min-height: 110px;
+      padding: 10px 10px;
+      border-radius: 12px;
+      border: 1px solid var(--soft2);
+      background: rgba(0,0,0,.18);
+      color: var(--text);
+      outline: none;
+      resize: vertical;
+    }
+    .footerNote {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 18px 28px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="titleRow">
+    <div>
+      <h1>LOTOS Market Intel: Hallazgos, Prioridades y Plan de Movimiento 🚀</h1>
+      <div class="sub">
+        Datos integrados desde <span class="mono">Reporte_Lotos.xlsx</span> + <span class="mono">Reporte_Estrategico_Lotos.pdf</span> y un bloque de investigación pública para convertir hallazgos en acciones.
+      </div>
+    </div>
+    <div class="pill">📅 Datos capturados: <b id="dataDate">2025-11-23 23:39:48.505000</b></div>
+  </div>
+</header>
+
+<main class="grid">
+  <section class="card">
+    <div class="cardHeader">
+      <h2>1) Resumen ejecutivo (lo que grita el mercado)</h2>
+      <span class="tag warn" id="marketStateTag">Evaluando...</span>
+    </div>
+    <div class="cardBody">
+      <div class="kpis" id="kpiGrid"></div>
+
+      <div id="geoBanner" class="banner" style="margin-top:12px; display:none;">
+        <div><strong>Alerta de calidad geográfica:</strong> tus coordenadas están fuera de México.</div>
+        <small>
+          Este dataset tiene latitudes ~40 y longitudes ~-3 (zona de Guadalajara, España). Si tu objetivo real es Santa Teresita, Guadalajara Jalisco,
+          rehace el escaneo con una consulta que incluya "Guadalajara, Jalisco, México" o "Santa Teresita, Guadalajara, Jalisco" y valida con un muestreo en Google Maps.
+          El panel no oculta el dato, lo resalta para que no salgas a campo con un mapa falso.
+        </small>
+      </div>
+
+      <div style="margin-top:14px;" class="controls">
+        <div>
+          <label>Buscar negocio</label>
+          <input id="q" type="text" placeholder="Ej: farmacia, gimnasio, nombre..." />
+        </div>
+        <div>
+          <label>Actividad</label>
+          <select id="actividadFilter"></select>
+        </div>
+        <div>
+          <label>Prioridad</label>
+          <select id="sortBy">
+            <option value="score_desc">Score (alto primero)</option>
+            <option value="score_asc">Score (bajo primero)</option>
+            <option value="nombre_asc">Nombre (A-Z)</option>
+            <option value="nombre_desc">Nombre (Z-A)</option>
+          </select>
+        </div>
+        <div class="row">
+          <button class="btn secondary" id="exportCsvBtn">Exportar CSV</button>
+          <button class="btn danger" id="resetLocalBtn" title="Borra estados y notas guardadas en este navegador">Reset estados</button>
+        </div>
+        <div class="toggle">
+          <input id="onlyNoWeb" type="checkbox" checked />
+          <div>
+            <div style="font-weight:800;">Solo sin web</div>
+            <div class="small">Tu oportunidad principal</div>
+          </div>
+        </div>
+        <div class="toggle">
+          <input id="onlyWithPhone" type="checkbox" />
+          <div>
+            <div style="font-weight:800;">Solo con teléfono</div>
+            <div class="small">Para llamar o WhatsApp</div>
+          </div>
+        </div>
+        <div class="toggle">
+          <input id="onlyTop20" type="checkbox" />
+          <div>
+            <div style="font-weight:800;">Solo Top 20</div>
+            <div class="small">Lista de ataque prioritario</div>
+          </div>
+        </div>
+        <div class="toggle">
+          <input id="onlyPending" type="checkbox" checked />
+          <div>
+            <div style="font-weight:800;">Solo pendientes</div>
+            <div class="small">Oculta cerrados o descartados</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;" class="charts">
+        <div class="chartBox">
+          <div class="chartTitle">
+            <b>Con web vs sin web</b>
+            <span id="pieHint" class="mono"></span>
+          </div>
+          <canvas id="pieWeb" width="680" height="260"></canvas>
+        </div>
+        <div class="chartBox">
+          <div class="chartTitle">
+            <b>Volumen por actividad</b>
+            <span class="mono">Dónde hay más dinero escondido</span>
+          </div>
+          <canvas id="barAct" width="680" height="260"></canvas>
+        </div>
+        <div class="chartBox">
+          <div class="chartTitle">
+            <b>% sin web por actividad</b>
+            <span class="mono">Dolor digital por rubro</span>
+          </div>
+          <canvas id="barNoWebPct" width="680" height="260"></canvas>
+        </div>
+        <div class="chartBox">
+          <div class="chartTitle">
+            <b>Canales de contacto disponibles</b>
+            <span class="mono">Qué tan fácil es llegar</span>
+          </div>
+          <canvas id="barContact" width="680" height="260"></canvas>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;">
+        <div class="row" style="justify-content: space-between;">
+          <div class="tag" id="rowsCountTag">0 resultados</div>
+          <div class="small">Tip: haz clic en un negocio para abrir panel de acción (status, notas, Maps, scripts).</div>
+        </div>
+      </div>
+
+      <div style="margin-top:10px; max-height: 520px; overflow:auto; border-radius: 14px; border: 1px solid rgba(255,255,255,.08);">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 24%;">Negocio</th>
+              <th style="width: 14%;">Actividad</th>
+              <th style="width: 10%;">Score</th>
+              <th style="width: 16%;">Contacto</th>
+              <th style="width: 18%;">Oferta recomendada</th>
+              <th style="width: 18%;">Siguiente paso</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <aside class="card">
+    <div class="cardHeader">
+      <h2>2) Cómo te mueves (llamadas, visitas, correos) + Productos</h2>
+      <span class="tag ok">Modo Ejecución</span>
+    </div>
+    <div class="cardBody">
+      <div class="banner" style="background: rgba(67,243,183,.08);">
+        <div><strong>Idea central:</strong> 87.9% sin web = mercado con hambre de visibilidad y automatización.</div>
+        <small>
+          Tu ventaja competitiva no es hacer "una página", es vender resultados: más pedidos, menos llamadas perdidas, reseñas, reservas, recordatorios.
+        </small>
+      </div>
+
+      <div class="split" style="margin-top:12px;">
+        <div class="kpi">
+          <div class="label">Tu canal más probable</div>
+          <div class="value">Presencial + WhatsApp</div>
+          <div class="hint">Porque casi nadie tiene email y muchos sí usan WhatsApp.</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Tu primer quick win</div>
+          <div class="value">Google Maps</div>
+          <div class="hint">Perfil bien armado + fotos + botón WhatsApp + reseñas.</div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;" class="accordion">
+        <details open>
+          <summary>Plan de acción en 7 días (sin fantasías)</summary>
+          <div class="detailBody">
+            <ol style="margin: 0; padding-left: 18px;">
+              <li><b>Día 1:</b> Validación geográfica + seleccionar 30 prospectos (Top 20 + 10 por rubro). Armar demo en tu celular (landing real, bot simple, menú QR).</li>
+              <li><b>Día 2-3:</b> Ruta presencial. 15 visitas por día. Objetivo: 5 demos, 2 cierres. Deja evidencia: tarjeta + QR a demo.</li>
+              <li><b>Día 4:</b> Seguimiento por WhatsApp a interesados. Pide un "sí" o "no" directo.</li>
+              <li><b>Día 5:</b> Entrega de 1er cliente (rápido). Pide reseña y permiso para usar caso.</li>
+              <li><b>Día 6:</b> Repetir ruta con ajuste: solo rubros que respondieron mejor.</li>
+              <li><b>Día 7:</b> Paquetes mensuales: mantenimiento, campañas, reseñas, reportes. Vender recurrencia.</li>
+            </ol>
+          </div>
+        </details>
+        <details>
+          <summary>Decisión rápida: llamar, visitar o mandar correo</summary>
+          <div class="detailBody">
+            <ul style="margin:0; padding-left: 18px;">
+              <li><b>Si hay teléfono:</b> WhatsApp primero. Si no contestan: llamada breve (30-60s). Si no: visita con tarjeta.</li>
+              <li><b>Si no hay teléfono ni correo:</b> visita presencial sí o sí. Meta: conseguir WhatsApp del encargado.</li>
+              <li><b>Si hay web pero mala:</b> vendes mejoras (reservas, reseñas, velocidad, ventas), y cobras mantenimiento.</li>
+              <li><b>Correo:</b> canal secundario. Úsalo cuando exista y haya oficina (clínicas, gimnasios grandes).</li>
+            </ul>
+          </div>
+        </details>
+        <details>
+          <summary>Paquetes producto listos para vender (por rubro)</summary>
+          <div class="detailBody" id="productPacks"></div>
+        </details>
+        <details>
+          <summary>Scripts (presencial, WhatsApp, demo 5 min)</summary>
+          <div class="detailBody">
+            <div class="small">Scripts basados en tu PDF y reforzados para ser más directos. Ajusta montos y tiempos a tu realidad.</div>
+            <div class="codeBox" style="margin-top:10px;" id="scriptsBox"></div>
+          </div>
+        </details>
+        <details>
+          <summary>Investigación extra (para vender con base)</summary>
+          <div class="detailBody" id="researchBox"></div>
+        </details>
+        <details>
+          <summary>Checklist de campo (guardar en este navegador)</summary>
+          <div class="detailBody">
+            <div id="checklist"></div>
+          </div>
+        </details>
+      </div>
+
+      <div style="margin-top:12px;" class="banner" id="nextMoveBanner" style="display:none;"></div>
+    </div>
+  </aside>
+</main>
+
+<div class="footerNote">
+  <b>Nota legal y operativa:</b> Este panel no sustituye asesoría legal. Si vas a capturar datos personales (formularios, CRM, WhatsApp automatizado),
+  prepara aviso de privacidad y buenas prácticas. Si trabajas con publicidad de servicios de salud, revisa reglas de COFEPRIS antes de lanzar anuncios.
+</div>
+
+<div class="drawer" id="drawer">
+  <div class="drawerPanel">
+    <div class="drawerHeader">
+      <h3 id="dTitle">Prospecto</h3>
+      <button class="btn secondary" id="closeDrawer">Cerrar</button>
+    </div>
+
+    <div class="drawerGrid">
+      <div class="full">
+        <div class="small" id="dMeta"></div>
+      </div>
+
+      <div>
+        <label>Status</label>
+        <select id="dStatus">
+          <option value="pendiente">Pendiente</option>
+          <option value="contactado">Contactado</option>
+          <option value="interesado">Interesado</option>
+          <option value="cerrado">Cerrado</option>
+          <option value="descartado">Descartado</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Próximo seguimiento</label>
+        <input id="dFollow" type="text" placeholder="Ej: hoy 6pm, mañana, viernes" />
+      </div>
+
+      <div class="full">
+        <label>Oferta recomendada</label>
+        <div class="codeBox" id="dOffer"></div>
+      </div>
+
+      <div class="full">
+        <label>Siguiente paso sugerido</label>
+        <div class="codeBox" id="dNext"></div>
+      </div>
+
+      <div class="full">
+        <label>Notas (objeciones, encargado, precio, etc.)</label>
+        <textarea id="dNotes" placeholder="Ej: Encargado: Ana. Le interesa menú QR. Dice que no tiene fotos. Seguimiento jueves."></textarea>
+      </div>
+
+      <div class="full row" style="justify-content: space-between; margin-top: 8px;">
+        <div class="row">
+          <button class="btn" id="saveDrawer">Guardar</button>
+          <button class="btn secondary" id="copyPitch">Copiar pitch</button>
+        </div>
+        <div class="row">
+          <button class="btn secondary" id="openMaps">Abrir Maps</button>
+          <button class="btn secondary" id="openWeb">Abrir web</button>
+        </div>
+      </div>
+
+      <div class="full" style="margin-top:10px;">
+        <div class="small"><b>Mini pitch listo:</b></div>
+        <div class="codeBox" id="dPitch"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA = [{"nombre":"Mesón Bejanque","actividad":"Restaurante","telefono":"349213073","correo":"","sitio_web":"","direccion":"Calle Juan Diges Antón 5","colonia":"","cp":"19003","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.631033,"lng":-3.184037,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"Restaurante El Infantado","actividad":"Restaurante","telefono":"349214950","correo":"","sitio_web":"","direccion":"Calle Juan Diges Antón 1","colonia":"","cp":"19003","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.631062,"lng":-3.184321,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"El Bodegón de Sancho","actividad":"Restaurante","telefono":"349212253","correo":"","sitio_web":"","direccion":"Calle Pedro Pascual 35","colonia":"","cp":"19003","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.631144,"lng":-3.184615,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"El Pampa","actividad":"Restaurante","telefono":"349212201","correo":"","sitio_web":"","direccion":"Calle Juan Diges Antón 7","colonia":"","cp":"19003","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.630851,"lng":-3.183834,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"Celtigos","actividad":"Restaurante","telefono":"349212250","correo":"","sitio_web":"","direccion":"Calle Juan Diges Antón 3","colonia":"","cp":"19003","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.630952,"lng":-3.184181,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"Farmacia La Chopera","actividad":"Farmacia","telefono":"349212340","correo":"","sitio_web":"","direccion":"Paseo Doctor Fernández Iparraguirre 3","colonia":"","cp":"19001","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.633237,"lng":-3.17561,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"Farmacia La Rambla","actividad":"Farmacia","telefono":"349212195","correo":"","sitio_web":"","direccion":"Avenida de Castilla 21","colonia":"","cp":"19002","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.634932,"lng":-3.171471,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"Basic-Fit","actividad":"Gimnasio","telefono":"","correo":"","sitio_web":"","direccion":"Calle Mayor 35","colonia":"","cp":"19001","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.631651,"lng":-3.168897,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"Dellas","actividad":"Belleza","telefono":"","correo":"","sitio_web":"","direccion":"Calle Francisco Aritio 99","colonia":"","cp":"19004","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.660318,"lng":-3.15728,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"Taller Mecanico Generico","actividad":"Taller","telefono":"","correo":"","sitio_web":"","direccion":"Calle Francisco Aritio 105","colonia":"","cp":"19004","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.660317,"lng":-3.156815,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"Cafeteria Marma","actividad":"Cafetería","telefono":"","correo":"","sitio_web":"","direccion":"Calle Mayor 12","colonia":"","cp":"19001","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.632907,"lng":-3.168649,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"La Nouba","actividad":"Restaurante","telefono":"","correo":"","sitio_web":"","direccion":"Plaza de Santo Domingo 2","colonia":"","cp":"19001","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.632796,"lng":-3.166829,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"El gusto de cocina de autor","actividad":"Restaurante","telefono":"","correo":"","sitio_web":"","direccion":"Calle Juan de Austria 10","colonia":"","cp":"19001","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.6339,"lng":-3.16425,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"El Palomo","actividad":"Restaurante","telefono":"","correo":"","sitio_web":"","direccion":"Calle Mayor 23","colonia":"","cp":"19001","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.632146,"lng":-3.16812,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"Loft76","actividad":"Restaurante","telefono":"","correo":"","sitio_web":"","direccion":"Calle Mayor 76","colonia":"","cp":"19001","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.63043,"lng":-3.169633,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"La Herradura","actividad":"Restaurante","telefono":"","correo":"","sitio_web":"","direccion":"Calle Mayor 31","colonia":"","cp":"19001","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.631956,"lng":-3.168571,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"Can-Vic","actividad":"Restaurante","telefono":"","correo":"","sitio_web":"","direccion":"Calle Mayor 54","colonia":"","cp":"19001","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.631114,"lng":-3.168839,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"Sotillo","actividad":"Restaurante","telefono":"","correo":"","sitio_web":"","direccion":"Calle Mayor 60","colonia":"","cp":"19001","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.630954,"lng":-3.168874,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"Redondo","actividad":"Restaurante","telefono":"","correo":"","sitio_web":"","direccion":"Calle Mayor 62","colonia":"","cp":"19001","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.630866,"lng":-3.168902,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"},{"nombre":"Bar Costa a Costa","actividad":"Restaurante","telefono":"","correo":"","sitio_web":"","direccion":"Calle Mayor 65","colonia":"","cp":"19001","municipio":"Guadalajara","entidad":"Castilla-La Mancha","lat":40.63078,"lng":-3.168925,"tiene_web":false,"fuente":"OpenStreetMap","fecha":"2025-11-23 23:39:48.505000"}];
+const METRICS = {"total":20,"with_web":0,"without_web":20,"pct_with_web":0.0,"pct_without_web":100.0,"with_phone":7,"pct_with_phone":35.0,"with_email":0,"pct_with_email":0.0};
+const ACTIVITY_SUMMARY = [{"actividad":"Restaurante","total":14,"sin_web":14,"con_web":0,"pct_sin_web":100.0},{"actividad":"Farmacia","total":2,"sin_web":2,"con_web":0,"pct_sin_web":100.0},{"actividad":"Gimnasio","total":1,"sin_web":1,"con_web":0,"pct_sin_web":100.0},{"actividad":"Belleza","total":1,"sin_web":1,"con_web":0,"pct_sin_web":100.0},{"actividad":"Taller","total":1,"sin_web":1,"con_web":0,"pct_sin_web":100.0},{"actividad":"Cafetería","total":1,"sin_web":1,"con_web":0,"pct_sin_web":100.0}];
+const TOP20 = ["Mesón Bejanque","Restaurante El Infantado","El Bodegón de Sancho","El Pampa","Celtigos","Farmacia La Chopera","Farmacia La Rambla","Basic-Fit","Dellas","Taller Mecanico Generico","Cafeteria Marma","La Nouba","El gusto de cocina de autor","El Palomo","Loft76","La Herradura","Can-Vic","Sotillo","Redondo","Bar Costa a Costa"];
+
+/* Utilidades */
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll(s));
+function norm(s) { return (s || "").toString().trim().toLowerCase(); }
+function isMexico(lat, lng) { if (lat == null || lng == null) return false; return lat >= 14 && lat <= 33.5 && lng >= -118.5 && lng <= -86.0; }
+function looksSpain(lat, lng) { if (lat == null || lng == null) return false; return lat >= 35 && lat <= 45 && lng >= -10 && lng <= 5; }
+
+function keyFor(row) {
+  const base = (row.nombre + "|" + row.actividad + "|" + row.telefono + "|" + row.sitio_web).slice(0, 160);
+  let h = 0;
+  for (let i = 0; i < base.length; i++) { h = ((h << 5) - h) + base.charCodeAt(i); h |= 0; }
+  return "lotos_prospect_" + Math.abs(h);
+}
+function getSaved(row) { try { return JSON.parse(localStorage.getItem(keyFor(row)) || "{}"); } catch(e) { return {}; } }
+function setSaved(row, obj) { localStorage.setItem(keyFor(row), JSON.stringify(obj)); }
+
+function hasPhone(row) { return (row.telefono || "").toString().replace(/\D/g,"").length >= 7; }
+function hasEmail(row) { return norm(row.correo).includes("@"); }
+function hasWeb(row) { return !!row.tiene_web || norm(row.sitio_web).startsWith("http"); }
+
+function offerFor(activity) {
+  const a = norm(activity);
+  if (a.includes("restaur")) return { title: "Menú QR + Reservas + Pedidos WhatsApp", bullets: ["Menú digital con QR.", "WhatsApp para reservar o pedir.", "Reseñas y fotos para levantar Maps.", "Opcional: link de pago y promos."] };
+  if (a.includes("farmac")) return { title: "Landing Express + Catálogo + WhatsApp pedidos", bullets: ["Página 1 pantalla con horarios, ubicación y WhatsApp.", "Catálogo básico (top productos) y pedido por WhatsApp.", "Plantillas rápidas de respuesta."] };
+  if (a.includes("cafet")) return { title: "Menú QR + Programa de lealtad simple", bullets: ["Menú QR con combos y horarios.", "Tarjeta de sellos por WhatsApp.", "Fotos y reseñas para búsquedas cercanas."] };
+  if (a.includes("taller")) return { title: "Bot Estatus Reparación + Recordatorios", bullets: ["Mensajes de estatus: recibido, diagnóstico, listo.", "Recordatorios de mantenimiento.", "Página simple con servicios y WhatsApp."] };
+  if (a.includes("gimnas")) return { title: "Bot de membresías + Agenda de clases", bullets: ["Respuestas automáticas: precios, horarios, promos.", "Agenda y recordatorios.", "Captura leads y seguimiento."] };
+  if (a.includes("dent")) return { title: "Agenda + Recordatorios + Landing (cuidado COFEPRIS)", bullets: ["Agendador con recordatorios.", "Landing sobria enfocada en confianza.", "Checklist de publicidad para evitar multas."] };
+  if (a.includes("bellez")) return { title: "Agendador + Catálogo + Paquetes", bullets: ["Agenda rápida por WhatsApp.", "Catálogo de servicios y paquetes.", "Reseñas y fotos para atraer en Maps."] };
+  return { title: "Landing Express + WhatsApp + Google Maps", bullets: ["Presencia mínima y vendible.", "WhatsApp como canal central.", "Fotos, reseñas y ubicación."] };
+}
+
+function nextStepFor(row) {
+  if (!hasWeb(row)) { if (hasPhone(row)) return "WhatsApp (1 mensaje) y si no: llamada corta"; return "Visita presencial y conseguir WhatsApp del encargado"; }
+  if (hasPhone(row)) return "Auditoría rápida: reservas, reseñas, velocidad y ventas";
+  return "Email si existe, si no: visita con auditoría impresa";
+}
+
+function scoreRow(row) {
+  let s = 0;
+  if (!hasWeb(row)) s += 55;
+  if (hasPhone(row)) s += 18;
+  if (hasEmail(row)) s += 8;
+  if (TOP20.some(n => norm(row.nombre).includes(norm(n)))) s += 12;
+
+  const a = norm(row.actividad);
+  if (a.includes("dent")) s += 10;
+  else if (a.includes("gimnas")) s += 8;
+  else if (a.includes("farmac")) s += 7;
+  else if (a.includes("taller")) s += 7;
+  else if (a.includes("bellez")) s += 6;
+  else if (a.includes("restaur")) s += 5;
+  else if (a.includes("cafet")) s += 4;
+
+  if ((row.direccion || "").trim().length > 8) s += 3;
+  if ((row.cp || "").toString().trim().length >= 4) s += 2;
+  if (!isMexico(row.lat, row.lng)) s -= 8;
+  return Math.max(0, Math.round(s));
+}
+
+function fmtContact(row) {
+  const bits = [];
+  if (hasPhone(row)) bits.push("📱 " + row.telefono);
+  if (hasEmail(row)) bits.push("✉️ " + row.correo);
+  if (hasWeb(row)) bits.push("🌐 web");
+  if (!bits.length) return "Sin datos";
+  return bits.join("\n");
+}
+
+function mapsUrl(row) {
+  if (row.lat != null && row.lng != null) return "https://www.google.com/maps?q=" + encodeURIComponent(row.lat + "," + row.lng);
+  const q = [row.nombre, row.direccion, row.municipio, row.entidad].filter(Boolean).join(" ");
+  return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+}
+
+function buildPitch(row) {
+  const off = offerFor(row.actividad);
+  const competitor = "un local cercano";
+  return [
+    "Hola, soy de LOTOS. Estaba buscando " + row.nombre + " en Google Maps para recomendarlo,",
+    "y noté que no aparece una página propia o un menú digital. Mientras " + competitor + " sí tiene y captura pedidos.",
+    "Nosotros lo resolvemos rápido: " + off.title + ". En 3 días queda listo para que la gente pida directo por WhatsApp.",
+    "¿Le muestro una demo en 2-5 minutos en mi celular?"
+  ].join(" ");
+}
+
+/* Estado */
+const state = { q:"", actividad:"Todas", onlyNoWeb:true, onlyWithPhone:false, onlyTop20:false, onlyPending:true, sortBy:"score_desc", filtered:[] };
+
+function initKPIs() {
+  const kpiGrid = $("#kpiGrid");
+  const kpis = [
+    { label: "Negocios analizados", value: METRICS.total, hint: "Total de registros" },
+    { label: "Sin web (oportunidad)", value: METRICS.without_web, hint: METRICS.pct_without_web.toFixed(1) + "% del mercado" },
+    { label: "Con web", value: METRICS.with_web, hint: METRICS.pct_with_web.toFixed(1) + "% del mercado" },
+    { label: "Con teléfono", value: METRICS.with_phone, hint: METRICS.pct_with_phone.toFixed(1) + "% con canal directo" },
+  ];
+  kpiGrid.innerHTML = kpis.map(k => `
+    <div class="kpi">
+      <div class="label">${k.label}</div>
+      <div class="value">${k.value}</div>
+      <div class="hint">${k.hint}</div>
+    </div>
+  `).join("");
+
+  const marketStateTag = $("#marketStateTag");
+  if (METRICS.pct_without_web >= 70) { marketStateTag.textContent = "Oportunidad crítica"; marketStateTag.className = "tag bad"; }
+  else if (METRICS.pct_without_web >= 40) { marketStateTag.textContent = "Oportunidad media"; marketStateTag.className = "tag warn"; }
+  else { marketStateTag.textContent = "Mercado más maduro"; marketStateTag.className = "tag ok"; }
+
+  $("#pieHint").textContent = METRICS.pct_without_web.toFixed(1) + "% sin web";
+
+  const totalWithCoords = DATA.filter(r => r.lat != null && r.lng != null).length;
+  const mex = DATA.filter(r => isMexico(r.lat, r.lng)).length;
+  const sp = DATA.filter(r => looksSpain(r.lat, r.lng)).length;
+  if (totalWithCoords && mex === 0 && sp / totalWithCoords > 0.7) $("#geoBanner").style.display = "block";
+}
+
+function initFilters() {
+  const sel = $("#actividadFilter");
+  const acts = ["Todas", ...Array.from(new Set(DATA.map(r => r.actividad))).filter(Boolean).sort()];
+  sel.innerHTML = acts.map(a => `<option value="${a}">${a}</option>`).join("");
+  sel.value = "Todas";
+
+  $("#onlyNoWeb").checked = true;
+  $("#onlyPending").checked = true;
+
+  $("#q").addEventListener("input", (e) => { state.q = e.target.value; apply(); });
+  sel.addEventListener("change", (e) => { state.actividad = e.target.value; apply(); });
+  $("#sortBy").addEventListener("change", (e) => { state.sortBy = e.target.value; apply(); });
+
+  ["onlyNoWeb","onlyWithPhone","onlyTop20","onlyPending"].forEach(id => {
+    $("#"+id).addEventListener("change", () => { state[id] = $("#"+id).checked; apply(); });
+  });
+}
+
+function apply() {
+  const q = norm(state.q);
+  let rows = DATA.slice().map(r => {
+    const saved = getSaved(r);
+    return { ...r, score: scoreRow(r), status: saved.status || "pendiente", follow: saved.follow || "", notes: saved.notes || "" };
+  });
+
+  if (state.actividad !== "Todas") rows = rows.filter(r => r.actividad === state.actividad);
+  if (state.onlyNoWeb) rows = rows.filter(r => !hasWeb(r));
+  if (state.onlyWithPhone) rows = rows.filter(r => hasPhone(r));
+  if (state.onlyTop20) rows = rows.filter(r => TOP20.some(n => norm(r.nombre).includes(norm(n))));
+  if (state.onlyPending) rows = rows.filter(r => !["cerrado","descartado"].includes(r.status));
+  if (q) rows = rows.filter(r => norm([r.nombre,r.actividad,r.direccion,r.municipio,r.entidad,r.cp].join(" ")).includes(q));
+
+  const s = state.sortBy;
+  rows.sort((a,b) => {
+    if (s === "score_desc") return b.score - a.score;
+    if (s === "score_asc") return a.score - b.score;
+    if (s === "nombre_asc") return a.nombre.localeCompare(b.nombre);
+    if (s === "nombre_desc") return b.nombre.localeCompare(a.nombre);
+    return 0;
+  });
+
+  state.filtered = rows;
+  renderTable();
+  renderCharts();
+  updateNextMoveBanner();
+}
+
+function renderTable() {
+  const tbody = $("#tbody");
+  const rows = state.filtered;
+  $("#rowsCountTag").textContent = rows.length + " resultados";
+
+  tbody.innerHTML = rows.map(r => {
+    const webTag = hasWeb(r) ? `<span class="tag ok">Con web</span>` : `<span class="tag bad">Sin web</span>`;
+    const topTag = TOP20.some(n => norm(r.nombre).includes(norm(n))) ? `<span class="tag warn">Top 20</span>` : "";
+    const off = offerFor(r.actividad);
+    const step = nextStepFor(r);
+    const status = r.status || "pendiente";
+    const statusTag = status === "cerrado" ? "ok" : (status === "interesado" ? "warn" : (status === "descartado" ? "bad" : ""));
+    const st = `<span class="tag ${statusTag}">${status}</span>`;
+
+    const addr = [r.direccion, r.cp, r.municipio, r.entidad].filter(x => (x||"").toString().trim()).join(", ") || "Dirección no disponible";
+
+    return `
+      <tr data-key="${keyFor(r)}">
+        <td>
+          <div style="font-weight:900; line-height:1.25;">${r.nombre}</div>
+          <div class="small">${addr}</div>
+          <div class="row" style="margin-top:6px; gap:6px;">${webTag}${topTag}${st}</div>
+        </td>
+        <td>${r.actividad}</td>
+        <td><b>${r.score}</b><div class="small">prioridad</div></td>
+        <td class="mono">${fmtContact(r)}</td>
+        <td>
+          <div style="font-weight:800;">${off.title}</div>
+          <div class="small">${off.bullets[0]}</div>
+        </td>
+        <td>
+          <div style="font-weight:800;">${step}</div>
+          <div class="small">${r.follow ? ("Seguimiento: " + r.follow) : "Sin fecha de seguimiento"}</div>
+        </td>
+      </tr>
+    `;
+  }).join("");
+
+  $$("#tbody tr").forEach(tr => {
+    tr.addEventListener("click", () => {
+      const k = tr.getAttribute("data-key");
+      const row = rows.find(r => keyFor(r) === k);
+      if (row) openDrawer(row);
+    });
+  });
+}
+
+function updateNextMoveBanner() {
+  const rows = state.filtered;
+  const toCall = rows.filter(r => !hasWeb(r) && hasPhone(r)).slice(0, 5);
+  const toVisit = rows.filter(r => !hasWeb(r) && !hasPhone(r)).slice(0, 5);
+
+  const b = $("#nextMoveBanner");
+  const parts = [];
+  if (toCall.length) parts.push(`<div><strong>Hoy por WhatsApp o llamada:</strong> ${toCall.map(r => r.nombre).join(", ")}</div>`);
+  if (toVisit.length) parts.push(`<div style="margin-top:6px;"><strong>Hoy presencial:</strong> ${toVisit.map(r => r.nombre).join(", ")}</div>`);
+  if (!parts.length) { b.style.display = "none"; return; }
+  b.style.display = "block";
+  b.innerHTML = parts.join("");
+}
+
+/* Charts */
+function clearCanvas(ctx, w, h) { ctx.clearRect(0,0,w,h); ctx.fillStyle = "rgba(255,255,255,0.02)"; ctx.fillRect(0,0,w,h); }
+function colorFor(label) {
+  let hash = 0;
+  for (let i=0;i<label.length;i++) hash = (hash*31 + label.charCodeAt(i))|0;
+  const hue = Math.abs(hash) % 360;
+  return `hsla(${hue}, 80%, 62%, 0.85)`;
+}
+function drawPie(canvas, values, labels) {
+  const ctx = canvas.getContext("2d");
+  const w = canvas.width, h = canvas.height;
+  clearCanvas(ctx,w,h);
+  const cx = w/2, cy = h/2, r = Math.min(w,h)*0.33;
+  const total = values.reduce((a,b)=>a+b,0) || 1;
+  let start = -Math.PI/2;
+
+  values.forEach((v,i)=> {
+    const ang = (v/total) * Math.PI*2;
+    ctx.beginPath();
+    ctx.moveTo(cx,cy);
+    ctx.fillStyle = colorFor(labels[i]);
+    ctx.arc(cx,cy,r,start,start+ang);
+    ctx.closePath();
+    ctx.fill();
+    start += ang;
+  });
+
+  ctx.font = "14px " + getComputedStyle(document.body).fontFamily;
+  let y = 18;
+  labels.forEach((lab,i)=> {
+    ctx.fillStyle = colorFor(lab);
+    ctx.fillRect(18,y-10,12,12);
+    ctx.fillStyle = "rgba(232,236,255,.92)";
+    ctx.fillText(lab + ": " + values[i], 38, y);
+    y += 18;
+  });
+}
+function drawBar(canvas, labels, values) {
+  const ctx = canvas.getContext("2d");
+  const w = canvas.width, h = canvas.height;
+  clearCanvas(ctx,w,h);
+
+  const padL = 46, padR = 18, padT = 16, padB = 42;
+  const maxV = Math.max(...values, 1);
+  const usableW = w - padL - padR;
+  const usableH = h - padT - padB;
+  const n = values.length || 1;
+  const barW = usableW / n * 0.72;
+  const gap = usableW / n * 0.28;
+
+  ctx.strokeStyle = "rgba(255,255,255,.10)";
+  ctx.beginPath();
+  ctx.moveTo(padL, padT);
+  ctx.lineTo(padL, padT+usableH);
+  ctx.lineTo(padL+usableW, padT+usableH);
+  ctx.stroke();
+
+  ctx.font = "12px " + getComputedStyle(document.body).fontFamily;
+  ctx.fillStyle = "rgba(184,193,255,.9)";
+
+  const ticks = 4;
+  for (let i=0;i<=ticks;i++) {
+    const v = Math.round(maxV * (1 - i/ticks));
+    const y = padT + usableH*(i/ticks);
+    ctx.fillText(String(v), 10, y+4);
+    ctx.strokeStyle = "rgba(255,255,255,.06)";
+    ctx.beginPath();
+    ctx.moveTo(padL, y);
+    ctx.lineTo(padL+usableW, y);
+    ctx.stroke();
+  }
+
+  for (let i=0;i<n;i++) {
+    const v = values[i];
+    const x = padL + i*(barW+gap) + gap/2;
+    const barH = (v/maxV)*usableH;
+    const y = padT + usableH - barH;
+    ctx.fillStyle = colorFor(labels[i]);
+    ctx.fillRect(x, y, barW, barH);
+
+    const lab = labels[i].length > 12 ? labels[i].slice(0,12)+"…" : labels[i];
+    ctx.save();
+    ctx.translate(x + barW/2, padT + usableH + 14);
+    ctx.rotate(-0.45);
+    ctx.fillStyle = "rgba(184,193,255,.95)";
+    ctx.textAlign = "center";
+    ctx.fillText(lab, 0, 0);
+    ctx.restore();
+  }
+}
+function renderCharts() {
+  drawPie($("#pieWeb"), [METRICS.without_web, METRICS.with_web], ["Sin web", "Con web"]);
+  const labs = ACTIVITY_SUMMARY.map(x => x.actividad);
+  drawBar($("#barAct"), labs, ACTIVITY_SUMMARY.map(x => x.total));
+  drawBar($("#barNoWebPct"), labs, ACTIVITY_SUMMARY.map(x => x.pct_sin_web));
+  drawBar($("#barContact"), ["Teléfono", "Correo", "Web"], [METRICS.with_phone, METRICS.with_email, METRICS.with_web]);
+}
+
+/* Drawer */
+let drawerRow = null;
+function openDrawer(row) {
+  drawerRow = row;
+  const saved = getSaved(row);
+  $("#dTitle").textContent = row.nombre;
+
+  const webTxt = hasWeb(row) ? "Con web" : "Sin web";
+  const webCls = hasWeb(row) ? "ok" : "bad";
+  $("#dMeta").innerHTML = `
+    <div class="row" style="gap:8px; flex-wrap: wrap;">
+      <span class="tag">${row.actividad}</span>
+      <span class="tag ${webCls}">${webTxt}</span>
+      <span class="tag warn">Score ${scoreRow(row)}</span>
+      <span class="tag">Fuente: ${row.fuente || "N/A"}</span>
+    </div>
+    <div class="small" style="margin-top:8px;">
+      <b>Dirección:</b> ${[row.direccion,row.cp,row.municipio,row.entidad].filter(x => (x||"").toString().trim()).join(", ") || "No disponible"}<br/>
+      <b>Tel:</b> ${row.telefono || "N/A"} | <b>Email:</b> ${row.correo || "N/A"} | <b>Web:</b> ${row.sitio_web || (hasWeb(row) ? "Sí" : "No")}
+    </div>
+  `;
+
+  const off = offerFor(row.actividad);
+  $("#dOffer").textContent = off.title + "\n- " + off.bullets.join("\n- ");
+  $("#dNext").textContent = nextStepFor(row);
+
+  $("#dStatus").value = saved.status || "pendiente";
+  $("#dFollow").value = saved.follow || "";
+  $("#dNotes").value = saved.notes || "";
+  $("#dPitch").textContent = buildPitch(row);
+
+  $("#drawer").classList.add("open");
+}
+function closeDrawer() { $("#drawer").classList.remove("open"); drawerRow = null; }
+$("#closeDrawer").addEventListener("click", closeDrawer);
+$("#drawer").addEventListener("click", (e) => { if (e.target.id === "drawer") closeDrawer(); });
+
+$("#saveDrawer").addEventListener("click", () => {
+  if (!drawerRow) return;
+  setSaved(drawerRow, { status: $("#dStatus").value, follow: $("#dFollow").value.trim(), notes: $("#dNotes").value.trim() });
+  apply();
+  closeDrawer();
+});
+$("#copyPitch").addEventListener("click", async () => {
+  if (!drawerRow) return;
+  try { await navigator.clipboard.writeText($("#dPitch").textContent); alert("Pitch copiado ✅"); }
+  catch(e) { alert("No pude usar clipboard. Copia manualmente el texto del pitch."); }
+});
+$("#openMaps").addEventListener("click", () => { if (!drawerRow) return; window.open(mapsUrl(drawerRow), "_blank"); });
+$("#openWeb").addEventListener("click", () => {
+  if (!drawerRow) return;
+  const url = drawerRow.sitio_web && norm(drawerRow.sitio_web).startsWith("http") ? drawerRow.sitio_web : mapsUrl(drawerRow);
+  window.open(url, "_blank");
+});
+
+/* Export + Reset */
+$("#exportCsvBtn").addEventListener("click", () => {
+  const rows = state.filtered;
+  const cols = ["nombre","actividad","telefono","correo","sitio_web","direccion","cp","municipio","entidad","tiene_web","score","status","follow","notes"];
+  const csv = [cols.join(",")].concat(rows.map(r => {
+    const saved = getSaved(r);
+    const row = { ...r, score: scoreRow(r), status: saved.status || "pendiente", follow: saved.follow || "", notes: saved.notes || "" };
+    return cols.map(c => `"${(row[c] ?? "").toString().replace(/"/g,'""')}"`).join(",");
+  })).join("\n");
+
+  const blob = new Blob([csv], {type:"text/csv;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = "lotos_prospectos_filtrados.csv"; a.click();
+  URL.revokeObjectURL(url);
+});
+$("#resetLocalBtn").addEventListener("click", () => {
+  const ok = confirm("Esto borrará estados y notas guardadas en este navegador. ¿Continuar?");
+  if (!ok) return;
+  Object.keys(localStorage).forEach(k => { if (k.startsWith("lotos_prospect_") || k.startsWith("lotos_check_")) localStorage.removeItem(k); });
+  apply();
+});
+
+/* Right content */
+function initRightPanelContent() {
+  const packs = [
+    { name:"Kit Visibilidad Express", who:"Cualquier negocio sin web", includes:["Google Maps completo","Fotos y reseñas","Botón WhatsApp","Landing 1 pantalla"], promise:"Que te encuentren, te escriban y te pidan." },
+    { name:"Restaurantes: Menú QR + Reservas", who:"Restaurantes y cafeterías", includes:["Menú QR","Reservas por WhatsApp","Promos semanales","Reseñas y fotos"], promise:"Menos fricción, más mesas y pedidos." },
+    { name:"Taller: Estatus Reparación", who:"Taller mecánico", includes:["Mensajes de estatus","Checklist diagnóstico","Recordatorios mantenimiento","Landing + Maps"], promise:"Menos llamadas repetidas, más confianza." },
+    { name:"Gimnasio: Bot Membresías", who:"Gimnasios y estudios", includes:["Precios y horarios automáticos","Agenda de clases","Seguimiento de leads","Promos"], promise:"Capturas interesados y reduces ausentismo." },
+    { name:"Clínicas y dentistas: Agenda", who:"Servicios de salud", includes:["Agenda y recordatorios","Landing sobria","Guía de cumplimiento publicitario","Reseñas"], promise:"Más citas y menos huecos, sin meterte en problemas." },
+  ];
+  $("#productPacks").innerHTML = packs.map(p => `
+    <div class="kpi" style="margin-bottom:10px;">
+      <div class="label">${p.who}</div>
+      <div class="value" style="font-size:16px;">${p.name}</div>
+      <div class="hint"><b>Incluye:</b> ${p.includes.join(" · ")}</div>
+      <div class="hint"><b>Promesa:</b> ${p.promise}</div>
+    </div>
+  `).join("");
+
+  const scripts = [
+    "A) Presencial (restaurantes y comercios):",
+    "Hola, soy de LOTOS. Estaba buscando su negocio en Google Maps para recomendarlo, pero noté que solo aparece la dirección: no tienen página propia, menú digital o botón de pedido.",
+    "Su competencia (un local cercano) ya lo tiene y se está llevando clientes que buscan rápido desde el celular.",
+    "Nosotros somos ingenieros locales. En pocos días le dejamos una página lista con menú o servicios y un botón directo a WhatsApp para que le pidan y reserven sin perder tiempo.",
+    "¿Le muestro una demo en 2-5 minutos en mi celular?",
+    "",
+    "B) Digital (gimnasios, spas, clínicas):",
+    "Hola, intenté agendar con ustedes y noté que el proceso es manual o tardan en contestar.",
+    "Tengo un sistema que se conecta a su WhatsApp, responde preguntas frecuentes y agenda citas automáticamente mientras ustedes atienden.",
+    "Reduce ausentismo, ahorra horas de recepción y captura leads.",
+    "¿Le gustaría ver una demo de 5 minutos funcionando en su celular?",
+    "",
+    "C) Seguimiento (WhatsApp):",
+    "Hola, soy [Tu Nombre] de LOTOS. Le comparto la demo y un ejemplo de cómo se vería su página o menú con botón WhatsApp.",
+    "Si le late, lo dejamos listo esta semana. ¿Le viene mejor verlo hoy o mañana?"
+  ].join("\n");
+  $("#scriptsBox").textContent = scripts;
+
+  $("#researchBox").innerHTML = `
+    <ul style="margin:0; padding-left: 18px;">
+      <li><b>WhatsApp manda:</b> IFT reporta que WhatsApp es la red social más utilizada por MiPyMEs (91.6%). <a href="https://www.ift.org.mx/sites/default/files/contenidogeneral/usuarios-y-audiencias/cuartaencuesta2024mipymes.pdf" target="_blank" rel="noreferrer">IFT</a></li>
+      <li><b>Adopción digital creció:</b> IFT reporta que contar con página web y/o redes sociales subió de 50.8% a 70.7% entre 2018 y 2023 (incluye redes). <a href="https://www.ift.org.mx/sites/default/files/comunicacion-y-medios/comunicados-ift/comunicado108ift_3.pdf" target="_blank" rel="noreferrer">IFT</a></li>
+      <li><b>Ventas por internet aún son bajas:</b> INEGI reporta 5.5% de unidades con ventas por internet en 2023, micro cerca de 4.4%. <a href="https://www.inegi.org.mx/contenidos/saladeprensa/aproposito/2025/EAP_MIPYMES_25.pdf" target="_blank" rel="noreferrer">INEGI</a></li>
+      <li><b>Google Business Profile es gratis:</b> perfil sin costo para Search y Maps. <a href="https://business.google.com/en-all/business-profile/" target="_blank" rel="noreferrer">Google</a></li>
+      <li><b>Datos personales:</b> si capturas datos, aviso de privacidad y principios de la LFPDPPP. <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf" target="_blank" rel="noreferrer">LFPDPPP</a> · <a href="https://inicio.inai.org.mx/CalendarioCapacitacion/ManualAvisoPrivacidad.pdf" target="_blank" rel="noreferrer">INAI</a></li>
+      <li><b>Servicios de salud:</b> COFEPRIS maneja avisos y permisos para publicidad regulada. <a href="https://www.gob.mx/cofepris/acciones-y-programas/autorizacion-publicitaria" target="_blank" rel="noreferrer">COFEPRIS</a></li>
+    </ul>
+    <div class="small" style="margin-top:8px;">
+      Traducción a ventas: WhatsApp como motor, Maps como entrada y un flujo simple que convierta (menú, agenda, estatus, pagos).
+    </div>
+  `;
+
+  const items = [
+    "Imprimir tarjetas con QR a demo",
+    "Demo en celular lista (landing + WhatsApp)",
+    "Fotos de ejemplo por rubro (restaurante, taller, gimnasio)",
+    "Plantillas de WhatsApp listas (1er mensaje, seguimiento, cierre)",
+    "Lista de 30 prospectos (Top 20 + 10 extra)",
+    "Ruta de visitas (15 por día, 2 días)",
+    "Oferta y precio claros (paquete único + mensualidad)",
+    "Sistema para guardar status (este panel)",
+    "Pedir reseña al cerrar 1er cliente"
+  ];
+  const wrap = document.createElement("div");
+  wrap.className = "small";
+  items.forEach((t,i) => {
+    const k = "lotos_check_" + i;
+    const v = localStorage.getItem(k) === "1";
+    const row = document.createElement("div");
+    row.className = "toggle";
+    row.style.marginBottom = "8px";
+    row.innerHTML = `<input type="checkbox" ${v ? "checked" : ""}/><div style="font-weight:800;">${t}</div>`;
+    const cb = row.querySelector("input");
+    cb.addEventListener("change", () => localStorage.setItem(k, cb.checked ? "1" : "0"));
+    wrap.appendChild(row);
+  });
+  const container = $("#checklist");
+  container.innerHTML = "";
+  container.appendChild(wrap);
+}
+
+/* Boot */
+function boot() {
+  initKPIs();
+  initFilters();
+  initRightPanelContent();
+  state.onlyNoWeb = $("#onlyNoWeb").checked;
+  state.onlyPending = $("#onlyPending").checked;
+  apply();
+}
+boot();
+</script>
+</body>
+</html>
